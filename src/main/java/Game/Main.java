@@ -163,6 +163,8 @@ public class Main {
             personagemEscolhido.ganharExperiencia(10520);
             personagemEscolhido.mostrarHabilidades();
 
+            //TESTE
+
         }
     }
 }
