@@ -88,18 +88,3 @@ public class Dungeon {
             heroi.recuperarMana(5); // Exemplo: Recupera 5 de mana por turno
         }
     }
-
-    // Chance de drop de itens após derrotar um monstro
-    public static void verificarDropItem(Personagens heroi) {
-        Random random = new Random();
-        int chance = random.nextInt(100); // 0 a 99
-
-        if (chance < 30) { // 30% de chance de dropar item
-            Item itemDropado = ReadyItems.espadaDeAco(); // Exemplo de item dropado
-            heroi.adicionarItem(itemDropado);
-            System.out.println("Você encontrou um item: " + itemDropado.getNome());
-        } else {
-            System.out.println("Nenhum item foi encontrado.");
-        }
-    }
-}
