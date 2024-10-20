@@ -20,6 +20,7 @@ public class Dungeon {
         MonstroDisponiveis.add(Monstro.goblin());
         MonstroDisponiveis.add(Monstro.dragao());
         MonstroDisponiveis.add(Monstro.lobisomem());
+        MonstroDisponiveis.add(Monstro.demonio());
         // etc...
 
         Random random = new Random();
