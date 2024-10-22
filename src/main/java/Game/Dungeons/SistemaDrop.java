@@ -1,10 +1,12 @@
 package Game.Dungeons;
+import Game.Items.Item;
+import Game.Items.ReadyItems;
 
 public class SistemaDrop {
 
   // Método para verificar drop após matar um monstro
     public static Item verificarDrop() {
-        Random random = new Random();
+        random random = new Random();
         int chance = random.nextInt(100)+1;  // Gera um número de 1 a 100
 
         if (chance < 60) {  // 60% de chance para item comum
@@ -22,45 +24,45 @@ public class SistemaDrop {
   // Métodos para dropar itens de acordo com a raridade
     public static Item droparItemComum() {
         ArrayList<Item> itensComuns = new ArrayList<>();
-        itensComuns.add(Item.espadaDeAco());  
-        itensComuns.add(Item.escudoDeMadeira());
-        itensComuns.add(Item.botasDeVelocidade());
+        itensComuns.add(ReadyItems.espadaDeAco());  
+        itensComuns.add(ReadyItems.escudoDeMadeira());
+        itensComuns.add(ReadyItems.botasDeVelocidade());
 
         return selecionarItemAleatorio(itensComuns);
     }
 
     public static Item droparItemIncomum() {
         ArrayList<Item> itensIncomum = new ArrayList<>();
-        itensIncomum.add(Item.espadaGrande());  
-        itensIncomum.add(Item.marteloDaForja());
-        itensIncomum.add(Item.cetroDeMagias());
+        itensIncomum.add(ReadyItems.espadaGrande());  
+        itensIncomum.add(ReadyItems.marteloDaForja());
+        itensIncomum.add(ReadyItems.cetroDeMagias());
 
         return selecionarItemAleatorio(itensIncomum);
     }
 
     public static Item droparItemRaro() {
         ArrayList<Item> itensRaro = new ArrayList<>();
-        itensRaro.add(Item.cajadoDaEscuridao()); 
-        itensRaro.add(Item.lancaDoPrimeiroLorde());
-        itensRaro.add(Item.laminasRasgaDemonios());
+        itensRaro.add(ReadyItems.cajadoDaEscuridao()); 
+        itensRaro.add(ReadyItems.lancaDoPrimeiroLorde());
+        itensRaro.add(ReadyItems.laminasRasgaDemonios());
 
         return selecionarItemAleatorio(itensRaro);
     }
 
     public static Item droparItemEpico() {
         ArrayList<Item> itensEpico = new ArrayList<>();
-        itensEpico.add(Item.tridenteDeAarlen()); 
-        itensEpico.add(Item.katanaDeVento());
-        itensEpico.add(Item.foiceDeAarfeus());
+        itensEpico.add(ReadyItems.tridenteDeAarlen()); 
+        itensEpico.add(ReadyItems.katanaDeVento());
+        itensEpico.add(ReadyItems.foiceDeAarfeus());
 
         return selecionarItemAleatorio(ItensEpico);
     }
 
      public static Item droparItemMistico() {
         ArrayList<Item> itensMistico = new ArrayList<>();
-        itensMistico.add(Item.adagaDaFe()); 
+        itensMistico.add(ReadyItems.adagaDaFe()); 
 
-        return selecionarItemAleatorio(ItensMistico);
+        return selecionarItemAleatorio(itensMistico);
     } 
     // Método para selecionar um item aleatório da lista
     public static Item selecionarItemAleatorio(ArrayList<Item> itens) {

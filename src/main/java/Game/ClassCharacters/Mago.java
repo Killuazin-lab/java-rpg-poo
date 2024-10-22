@@ -4,16 +4,16 @@ import java.util.Arrays;
 
 public class Mago extends Personagens {
     String Classe;
-    private double porcentagemXpGanho;
-    private double velocidadeAtaque;
-    private double tempoConjuracaoMagia;
-    private double alcanceMagia;
-    private double tempoRecargaMagias;
+    private int porcentagemXpGanho;
+    private int velocidadeAtaque;
+    private int tempoConjuracaoMagia;
+    private int alcanceMagia;
+    private int tempoRecargaMagias;
     private String[] magias; // Lista de magias do mago
 
-    public Mago(String nome, Double vida, Double mana, Double ataque, Double defesa, Double regenVida, Double regenMana , Double velocidade, double porcentagemXpGanho,
-                double velocidadeAtaque, double tempoConjuracaoMagia, 
-                double alcanceMagia, double tempoRecargaMagias, String[] magias) {
+    public Mago(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana , int velocidade, int porcentagemXpGanho,
+                int velocidadeAtaque, int tempoConjuracaoMagia, 
+                int alcanceMagia, int tempoRecargaMagias, String[] magias) {
         super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade); // Chama o construtor da classe mãe
         this.Classe = "Mago";
         this.porcentagemXpGanho = porcentagemXpGanho;
@@ -38,23 +38,23 @@ public class Mago extends Personagens {
         }
 
     // Getters e setters para os atributos específicos do Mago
-    public double getPorcentagemXpGanho() {
+    public int getPorcentagemXpGanho() {
         return porcentagemXpGanho;
     }
 
-    public double getVelocidadeAtaque() {
+    public int getVelocidadeAtaque() {
         return velocidadeAtaque;
     }
 
-    public double getTempoConjuracaoMagia() {
+    public int getTempoConjuracaoMagia() {
         return tempoConjuracaoMagia;
     }
 
-    public double getAlcanceMagia() {
+    public int getAlcanceMagia() {
         return alcanceMagia;
     }
 
-    public double getTempoRecargaMagias() {
+    public int getTempoRecargaMagias() {
         return tempoRecargaMagias;
     }
 

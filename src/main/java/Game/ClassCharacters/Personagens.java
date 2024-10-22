@@ -15,6 +15,7 @@ public class Personagens {
     protected int regenVida;
     protected int regenMana;
     protected int velocidade; // variavel que decide a ordem de ataque
+    private int dinheiro;  // Atributo para o dinheiro do personagem
     private int nivel;
     private int experiencia;  // XP atual
     private int experienciaProximoNivel;
@@ -132,6 +133,30 @@ public class Personagens {
                 System.out.println(item.toString());
             }
         }
+    }
+
+    // Métodos de manipulação de dinheiro
+    public void ganharDinheiro(int quantidade) {
+        this.dinheiro += quantidade;
+        System.out.println(nome + " ganhou " + quantidade + " moedas.");
+    }
+
+    public boolean gastarDinheiro(int quantidade) {
+        if (this.dinheiro >= quantidade) {
+            this.dinheiro -= quantidade;
+            System.out.println(nome + " gastou " + quantidade + " moedas.");
+            return true;
+        } else {
+            System.out.println(nome + " não tem dinheiro suficiente!");
+            return false;
+        }
+    }
+
+    public int getDinheiro() {
+        return dinheiro;
+    }
+    public void setDinheiro(int dinheiro){
+        this.dinheiro = dinheiro;
     }
 
     public String getNome() {

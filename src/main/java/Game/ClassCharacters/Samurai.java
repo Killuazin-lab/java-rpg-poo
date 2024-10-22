@@ -4,16 +4,16 @@ import java.util.Arrays;
 
 public class Samurai extends Personagens {
     String Classe;
-    private double porcentagemXpGanho; // porcentagem de xp ganho por inimigo morto
-    private double velocidadeAtaque; // ataques por segundo, se for maior que 2, pode ter chance de realizar 2 ataques em um unico turno
-    private double tempoConjuracaoHabilidade; // tempo em segundos para conjurar habilidades
-    private double alcanceAtaque; // distância do ataque
-    private double tempoRecargaHabilidades; // em segundos
+    private int porcentagemXpGanho; // porcentagem de xp ganho por inimigo morto
+    private int velocidadeAtaque; // ataques por segundo, se for maior que 2, pode ter chance de realizar 2 ataques em um unico turno
+    private int tempoConjuracaoHabilidade; // tempo em segundos para conjurar habilidades
+    private int alcanceAtaque; // distância do ataque
+    private int tempoRecargaHabilidades; // em segundos
     private String[] habilidades; // lista de habilidades do samurai
 
-    public Samurai(String nome, Double vida, Double mana, Double ataque, Double defesa,Double regenVida, Double regenMana,Double velocidade, double porcentagemXpGanho,
-                   double velocidadeAtaque, double tempoConjuracaoHabilidade, 
-                   double alcanceAtaque, double tempoRecargaHabilidades, String[] habilidades) {
+    public Samurai(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
+                   int velocidadeAtaque, int tempoConjuracaoHabilidade, 
+                   int alcanceAtaque, int tempoRecargaHabilidades, String[] habilidades) {
         super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade); // Chama o construtor da classe mãe
         this.Classe = "Samurai";
         this.porcentagemXpGanho = porcentagemXpGanho;
@@ -38,23 +38,23 @@ public class Samurai extends Personagens {
         }
 
     // Getters e setters para os atributos específicos do Samurai
-    public double getPorcentagemXpGanho() {
+    public int getPorcentagemXpGanho() {
         return porcentagemXpGanho;
     }
 
-    public double getVelocidadeAtaque() {
+    public int getVelocidadeAtaque() {
         return velocidadeAtaque;
     }
 
-    public double getTempoConjuracaoHabilidade() {
+    public int getTempoConjuracaoHabilidade() {
         return tempoConjuracaoHabilidade;
     }
 
-    public double getAlcanceAtaque() {
+    public int getAlcanceAtaque() {
         return alcanceAtaque;
     }
 
-    public double getTempoRecargaHabilidades() {
+    public int getTempoRecargaHabilidades() {
         return tempoRecargaHabilidades;
     }
 

@@ -7,19 +7,19 @@ import Game.Invocation.Planta;
 
 public class Druida extends Personagens {
     String Classe;
-    private double porcentagemXpGanho;
-    private double velocidadeAtaque;
-    private double tempoConjuracaoPoder;
-    private double alcancePoder;
-    private double tempoRecargaPoderes;
+    private int porcentagemXpGanho;
+    private int velocidadeAtaque;
+    private int tempoConjuracaoPoder;
+    private int alcancePoder;
+    private int tempoRecargaPoderes;
     private String[] poderes; // Poderes da natureza o
     private int sementes;
     private int contadorTurnos;
     private ArrayList<Planta> plantasInvocadas;
 
-    public Druida(String nome, Double vida, Double mana, Double ataque, Double defesa,Double regenVida, Double regenMana,Double velocidade, double porcentagemXpGanho,
-                  double velocidadeAtaque, double tempoConjuracaoPoder, 
-                  double alcancePoder, double tempoRecargaPoderes, String[] poderes) {
+    public Druida(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
+                  int velocidadeAtaque, int tempoConjuracaoPoder, 
+                  int alcancePoder, int tempoRecargaPoderes, String[] poderes) {
         super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade);
         this.Classe = "Druida";
         this.porcentagemXpGanho = porcentagemXpGanho;
@@ -82,23 +82,23 @@ public class Druida extends Personagens {
         }
 
     // Getters e setters
-    public double getPorcentagemXpGanho() {
+    public int getPorcentagemXpGanho() {
         return porcentagemXpGanho;
     }
 
-    public double getVelocidadeAtaque() {
+    public int getVelocidadeAtaque() {
         return velocidadeAtaque;
     }
 
-    public double getTempoConjuracaoPoder() {
+    public int getTempoConjuracaoPoder() {
         return tempoConjuracaoPoder;
     }
 
-    public double getAlcancePoder() {
+    public int getAlcancePoder() {
         return alcancePoder;
     }
 
-    public double getTempoRecargaPoderes() {
+    public int getTempoRecargaPoderes() {
         return tempoRecargaPoderes;
     }
 

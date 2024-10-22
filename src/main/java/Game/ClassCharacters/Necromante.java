@@ -7,18 +7,18 @@ import Game.Invocation.Invocacao;
 
 public class Necromante extends Personagens {
     String Classe;
-    private double porcentagemXpGanho;
-    private double velocidadeAtaque;
-    private double tempoConjuracaoHabilidade;
-    private double alcanceAtaque;
-    private double tempoRecargaHabilidades;
+    private int porcentagemXpGanho;
+    private int velocidadeAtaque;
+    private int tempoConjuracaoHabilidade;
+    private int alcanceAtaque;
+    private int tempoRecargaHabilidades;
     private String[] habilidades;
-    private double energiaDasTrevas; // Energia das trevas do necromante
+    private int energiaDasTrevas; // Energia das trevas do necromante
     private ArrayList<Invocacao> reservatorioDeMortos; // Armazena invocações
 
-    public Necromante(String nome, Double vida, Double mana, Double ataque, Double defesa, Double regenVida, Double regenMana, Double velocidade, double porcentagemXpGanho,
-                      double velocidadeAtaque, double tempoConjuracaoHabilidade, 
-                      double alcanceAtaque, double tempoRecargaHabilidades, String[] habilidades, double energiaDasTrevas) {
+    public Necromante(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana, int velocidade, int porcentagemXpGanho,
+                      int velocidadeAtaque, int tempoConjuracaoHabilidade, 
+                      int alcanceAtaque, int tempoRecargaHabilidades, String[] habilidades, int energiaDasTrevas) {
         super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade);
         this.Classe = "Necromante";
         this.porcentagemXpGanho = porcentagemXpGanho;
@@ -50,23 +50,23 @@ public class Necromante extends Personagens {
         }
 
     // Getters e setters
-    public double getPorcentagemXpGanho() {
+    public int getPorcentagemXpGanho() {
         return porcentagemXpGanho;
     }
 
-    public double getVelocidadeAtaque() {
+    public int getVelocidadeAtaque() {
         return velocidadeAtaque;
     }
 
-    public double getTempoConjuracaoHabilidade() {
+    public int getTempoConjuracaoHabilidade() {
         return tempoConjuracaoHabilidade;
     }
 
-    public double getAlcanceAtaque() {
+    public int getAlcanceAtaque() {
         return alcanceAtaque;
     }
 
-    public double getTempoRecargaHabilidades() {
+    public int getTempoRecargaHabilidades() {
         return tempoRecargaHabilidades;
     }
 
@@ -74,7 +74,7 @@ public class Necromante extends Personagens {
         return habilidades;
     }
 
-    public double getEnergiaDasTrevas() {
+    public int getEnergiaDasTrevas() {
         return energiaDasTrevas;
     }
 
