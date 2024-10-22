@@ -62,7 +62,7 @@ public class ReadyItems {
       return new Item("Foice De Aarfeus", "Foice utilizada por Aarfeus na guerra pelo trono de Lorde, sua força é tamanha por conta de sua lâmina, feita com sangue de demônios ancestrais", 500, 100, 350, 0, 0, 0);
   }
   
-    // Adaga da Fé (Item Místico) USO UNICO NO GAME, ARMA HITKILL EM QUALQUER INIMIGO, INCLUSIVE BOSS FINAL, TEM Q SER MT RARA
+    // Adaga da Fé (Item Místico) USO UNICO NO GAME, ARMA HITKILL EM QUALQUER INIMIGO, INCLUSIVE BOSS FINAL, TEM Q SER MT RARA //VAI SER USO UNICO
   public static Item adagaDaFe() {
       return new Item("Adaga da Fé", "Adaga forjada pelo primeiro Lorde, sua lâmina é radiante, seu poder é infinito, porém seu uso é único.", 1000000, 0, 0, 0, 0, 0); 
   }

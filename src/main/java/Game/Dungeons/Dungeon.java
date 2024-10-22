@@ -5,22 +5,24 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import Game.Dungeons.SistemaDrop;
 import Game.ClassCharacters.Personagens;
 import Game.Combatant.Combatente;
 import Game.Items.Item;
 import Game.Items.ReadyItems;
 import Game.Monters.Monstro;
+import Game.Monters.Monstros;
 
 public class Dungeon {
 
     // Gera de 5 a 6 Monstro aleatórios
     public static ArrayList<Monstro> gerarMonstro() {
         ArrayList<Monstro> MonstroDisponiveis = new ArrayList<Monstro>();
-        MonstroDisponiveis.add(Monstro.slime()); // Adicionar Monstro que você já criou
-        MonstroDisponiveis.add(Monstro.goblin());
-        MonstroDisponiveis.add(Monstro.dragao());
-        MonstroDisponiveis.add(Monstro.lobisomem());
-        MonstroDisponiveis.add(Monstro.demonio());
+        MonstroDisponiveis.add(Monstros.slime()); // Adicionar Monstro que você já criou
+        MonstroDisponiveis.add(Monstros.goblin());
+        MonstroDisponiveis.add(Monstros.dragao());
+        MonstroDisponiveis.add(Monstros.lobisomem());
+        MonstroDisponiveis.add(Monstros.demonio());
         // etc...
 
         Random random = new Random();
@@ -57,8 +59,8 @@ public class Dungeon {
                 if (Combatente instanceof Monstro) {
                     // Monstro ataca o herói
                     System.out.println(Combatente.getNome() + " ataca o herói!");
-                    heroi.receberDano(Combatente.getAtaque());
-                    if (heroi.getVida() <= 0) {
+                    personagemEscolhido.receberDano(Combatente.getAtaque());
+                    if (personagemEscolhido.getVida() <= 0) {
                         System.out.println("O herói foi derrotado!");
                         emCombate = false;
                         break;
@@ -67,12 +69,12 @@ public class Dungeon {
                     // Herói ataca monstro
                     Monstro monstro = Monstro.get(0); // Seleciona o primeiro monstro
                     System.out.println("Herói ataca " + monstro.getNome());
-                    monstro.receberDano(heroi.getAtaque());
+                    monstro.receberDano(personagemEscolhido.getAtaque());
 
                     if (monstro.getVida() <= 0) {
                         System.out.println(monstro.getNome() + " foi derrotado!");
                         Monstro.remove(monstro); // Remove o monstro derrotado
-                        verificarDropItem(heroi);
+                        SistemaDrop.verificarDrop(personagemEscolhido);
 
                         if (Monstro.isEmpty()) {
                             System.out.println("Todos os Monstro foram derrotados! A dungeon está limpa.");
@@ -84,7 +86,7 @@ public class Dungeon {
             }
 
             // Herói recupera um pouco de vida e mana após cada turno
-            heroi.recuperarVida(10); // Exemplo: Recupera 10 de vida por turno
-            heroi.recuperarMana(5); // Exemplo: Recupera 5 de mana por turno
+            personagemEscolhido.recuperarVida(10); // Exemplo: Recupera 10 de vida por turno
+            personagemEscolhido.recuperarMana(5); // Exemplo: Recupera 5 de mana por turno
         }
     }

@@ -1,12 +1,16 @@
 package Game.Dungeons;
+import java.util.ArrayList;
+import java.util.Random;
+
+import Game.ClassCharacters.Personagens;
 import Game.Items.Item;
 import Game.Items.ReadyItems;
 
 public class SistemaDrop {
 
   // Método para verificar drop após matar um monstro
-    public static Item verificarDrop() {
-        random random = new Random();
+    public static Item verificarDrop(Personagens personagemEscolhido) {
+        Random random = new Random();
         int chance = random.nextInt(100)+1;  // Gera um número de 1 a 100
 
         if (chance < 60) {  // 60% de chance para item comum
@@ -55,7 +59,7 @@ public class SistemaDrop {
         itensEpico.add(ReadyItems.katanaDeVento());
         itensEpico.add(ReadyItems.foiceDeAarfeus());
 
-        return selecionarItemAleatorio(ItensEpico);
+        return selecionarItemAleatorio(itensEpico);
     }
 
      public static Item droparItemMistico() {
