@@ -7,17 +7,17 @@ import Game.Items.Flecha;
 
 public class Arqueiro extends Personagens {
     String Classe;
-    private double porcentagemXpGanho;
-    private double velocidadeAtaque;
-    private double tempoConjuracaoHabilidade;
-    private double alcanceAtaque;
-    private double tempoRecargaHabilidades;
+    private int porcentagemXpGanho;
+    private int velocidadeAtaque;
+    private int tempoConjuracaoHabilidade;
+    private int alcanceAtaque;
+    private int tempoRecargaHabilidades;
     private String[] habilidades;
     private BolsaDeFlechas bolsaDeFlechas;
 
-    public Arqueiro(String nome, Double vida, Double mana, Double ataque, Double defesa,Double regenVida, Double regenMana,Double velocidade, double porcentagemXpGanho,
-                    double velocidadeAtaque, double tempoConjuracaoHabilidade, 
-                    double alcanceAtaque, double tempoRecargaHabilidades, String[] habilidades) {
+    public Arqueiro(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
+                    int velocidadeAtaque, int tempoConjuracaoHabilidade, 
+                    int alcanceAtaque, int tempoRecargaHabilidades, String[] habilidades) {
         super(nome, vida, mana, ataque, defesa,regenVida,regenMana,velocidade);
         this.Classe = "Arqueiro";
         this.porcentagemXpGanho = porcentagemXpGanho;
@@ -55,23 +55,23 @@ public class Arqueiro extends Personagens {
         return flechasInfo.toString();
     }
 
-    public double getPorcentagemXpGanho() {
+    public int getPorcentagemXpGanho() {
         return porcentagemXpGanho;
     }
 
-    public double getVelocidadeAtaque() {
+    public int getVelocidadeAtaque() {
         return velocidadeAtaque;
     }
 
-    public double getTempoConjuracaoHabilidade() {
+    public int getTempoConjuracaoHabilidade() {
         return tempoConjuracaoHabilidade;
     }
 
-    public double getAlcanceAtaque() {
+    public int getAlcanceAtaque() {
         return alcanceAtaque;
     }
 
-    public double getTempoRecargaHabilidades() {
+    public int getTempoRecargaHabilidades() {
         return tempoRecargaHabilidades;
     }
 

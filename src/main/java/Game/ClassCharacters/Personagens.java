@@ -8,20 +8,20 @@ import Game.Skills.HabilidadesEspecificas;
 
 public class Personagens {
     protected String nome;
-    protected Double vida;
-    protected Double mana;
-    protected Double ataque;
-    protected Double defesa;
-    protected Double regenVida;
-    protected Double regenMana;
-    protected Double velocidade; // variavel que decide a ordem de ataque
+    protected int vida;
+    protected int mana;
+    protected int ataque;
+    protected int defesa;
+    protected int regenVida;
+    protected int regenMana;
+    protected int velocidade; // variavel que decide a ordem de ataque
     private int nivel;
     private int experiencia;  // XP atual
     private int experienciaProximoNivel;
     private ArrayList<Habilidade> habilidades;  // Lista de habilidades desbloqueadas
     protected ArrayList<Item> itensEquipados;
 
-    public Personagens(String nome, Double vida, Double mana, Double ataque, Double defesa, Double regenVida, Double regenMana, Double velocidade) {
+    public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana, int velocidade) {
         this.nome = nome;
         this.vida = vida;
         this.mana = mana;
@@ -142,43 +142,43 @@ public class Personagens {
         this.nome = nome;
     }
 
-    public Double getVida() {
+    public int getVida() {
         return vida;
     }
 
-    public void setVida(Double vida) {
+    public void setVida(int vida) {
         this.vida = vida;
     }
 
-    public Double getMana() {
+    public int getMana() {
         return mana;
     }
 
-    public void setMana(Double mana) {
+    public void setMana(int mana) {
         this.mana = mana;
     }
 
-    public Double getAtaque() {
+    public int getAtaque() {
         return ataque;
     }
 
-    public Double getDefesa() {
+    public int getDefesa() {
         return defesa;
     }
 
-    public Double getRegenVida() {
+    public int getRegenVida() {
         return regenVida;
     }
     
-    public Double getRegenMana() {
+    public int getRegenMana() {
         return regenMana;
     }
 
-    public Double getVelocidade() {
+    public int getVelocidade() {
         return velocidade;
     }
 
-    public void setVelocidade(Double velocidade) {
+    public void setVelocidade(int velocidade) {
         this.velocidade = velocidade;
     }
     
