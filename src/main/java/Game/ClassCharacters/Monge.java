@@ -14,7 +14,7 @@ public class Monge extends Personagens {
 
     public Monge(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
                  int velocidadeAtaque, int tempoConjuracaoHabilidade, 
-                 int alcanceAtaque, int tempoRecargaHabilidades, String[] habilidades, int fe) {
+                 int alcanceAtaque, int tempoRecargaHabilidades, int fe, String[] habilidades) {
         super(nome, vida, mana, ataque, defesa, regenVida,regenMana,velocidade);
         this.Classe = "Monge";
         this.porcentagemXpGanho = porcentagemXpGanho;
@@ -22,8 +22,8 @@ public class Monge extends Personagens {
         this.tempoConjuracaoHabilidade = tempoConjuracaoHabilidade;
         this.alcanceAtaque = alcanceAtaque;
         this.tempoRecargaHabilidades = tempoRecargaHabilidades;
-        this.habilidades = habilidades;
         this.fe = fe;
+        this.habilidades = habilidades;
     }
 
     @Override
