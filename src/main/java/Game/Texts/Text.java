@@ -4,7 +4,7 @@ public class Text {
   //TERMINE TODOS OS TEXTOS COM /N, NÃO ESQUEÇAM
   // Texto de boas-vindas
   public static String boasVindas() {
-      return "Em um mundo dominado pelo caos, guerras, tiranias e atrocidades, ainda resta uma pequena fagulha de fé, uma fagulha que movimenta a esperança de todos do mundo.\nEssa fagulha logo se tornou uma fonte, gerando herois para lutarem na tentativa de resaturar a paz\n" +
+      return "Em um mundo dominado pelo caos, guerras, tiranias e atrocidades, ainda resta uma pequena fagulha de fé, uma fagulha que movimenta a esperança de todos.\nEssa fagulha logo se tornou uma fonte, gerando herois para lutarem na tentativa de resaturar a paz\n" +
               "Esses herois, que são chamados de Feixes de fé, terão que passar por diversos desafios e obstaculos em sua jornada.\n" +
               "Você é um recém formado em uma cidadela, um feixe de fé que sempre foi um grande aspirante, com grandes sonhos e ambições, e hoje é o dia de se registrar na guilda.\n";
   }
@@ -32,40 +32,42 @@ public class Text {
   // Texto pós registro
   public static String posRegistro() {
       return "\nApós preencher o formulario, você entrega ele para a atendente, ela agradeçe e te entrega a sua identificação de feixe novato junto de um discurso rapido.\n" +
-              " - Pequeno Feixe, adentre masmorras, supere os seus limites, ganhe mais experiência e evolue, para enfim derrotar o Aarfeus, o rei dos demonios, mas, acima " + "de tudo, se mantenha vivo, pois a vida de uma pessoa forte e corasoja como você é unica pra gente.\n";
+              " - Pequeno Feixe, adentre masmorras, supere os seus limites, ganhe mais experiência e evolue, para enfim derrotar o Aarfeus, o rei dos demonios, mas, acima " + 
+              "de tudo, se mantenha vivo, pois a vida de uma pessoa forte e corasoja como você é unica pra gente.\n";
   }
 
   // Texto explicação Dungeons
-  public static String explicDuegons() {
+  public static String explicarDungeons() {
       return "\n - A Dungeons possui diversos monstros, sua quantidade variam de 4 a 5, algumas raras vezes um monstro especial aparece.\n"+
               " - Podemos dizer que elas possuem 'niveis' de dificuldade, e cada nivel possui uma dificuldade diferente, indo de 1 a 7\n" +
               " - Como você acabou de se registrar, só pode acessar a Duegon de nivel 1, para poder liberar o acesso as outras, tem que conseguir mais nivel\n" +
               " - Conforme você subir de nivel, vai liberar as Dungeons\n";
   }
 
+    // Texto duvidas
+    public static String duvidas(){
+        return "\n1. Quanto de experiencia cada monstro dá?\n" +
+                "2. Quais são os nomes das Dungeons?\n" +
+                "3. Quais as cidades que posso visitar?\n" +
+                "4. Quais tipos de monstros existem?\n" +
+                "5. Como eu recebo dinheiro?\n" +
+                "6. Onde posso comprar equipamentos?\n" +
+                "7. Onde posso comprar poções?\n"+
+                "0. Por enquanto, só isso\n";
+    }
+
   // Texto explicação nivel
-  public static String explicLevel() {
+  public static String explicarLevel() {
       return " - Você sobe de nivel matando os Monstros que aparecem nas Dungeons, a cada ve que você sobe um nivel, o proximo vai precisar de ainda mais experiencia.\n";
   }
 
-  // Texto duvidas
-  public static String duvidas(){
-      return "\n1. Quanto de experiencia cada monstro da ?\n" +
-              "2. Quais são os nomes das Dungeons ?\n" +
-              "3. Quais as cidades que posso visitar ?\n" +
-              "4. Quais tipos de monstros existem ?\n" +
-              "5. Como eu recebo dinheiro ?\n" +
-              "6. Onde posso comprar equipamentos?\n" +
-              "7. Onde posso comprar poções ?\n"+
-              "0. Por enquanto, só isso\n";
-  }
   // Texto xp por monstro
   public static String xpMonstro() {
       return "\n - Para você descobrir isso, vai ter que matar um por um e ir se lembrando ou anotando, infelizmente não temos registros de outros feixes. \n";
   }
 
   // Texto de nomes das duegons
-  public static String duegonNomes() {
+  public static String dungeonNomes() {
       return "\n - Atualmente conhecemos somente 5, são elas: A,B,C,D,E\n";
   }
 
@@ -88,14 +90,14 @@ public class Text {
   }
 
   // Texto de ganhar Dinheiro
-  public static String explicDinheiro() {
+  public static String explicarDinheiro() {
        return "\n - Você pode ganhar dinheiro de duas formas: \n" +
               "Matando os monstros e pegando os cristais que eles deixam largar, cadas cristal pequeno equivale a 10 moedas, o medio a 25 e o grande a 50.\n" +
               "Ou, você pode ganhar dinheiro a partir de uma loja seja de equipamento ou de poções, onde você vende seus itens antigos e compra novos.\n";
   }
 
   // Texto de comprar itens
-  public static String explicItens() {
+  public static String explicarItens() {
       return "\n - Você pode comprar itens da loja de equipamentos, eles podem ser: \n" +
               "Armas\n" +
               "Escudos\n" +
@@ -104,7 +106,7 @@ public class Text {
   }
 
   // Texto de comprar poções
-  public static String explicPocoes() {
+  public static String explicarPocoes() {
       return "\n - Você pode comprar poções da loja de poções, elas podem ser: \n" +
               "Poções de cura (Recupera Vida)n" +
               "Poções de mana (Recupera Mana)\n" +
@@ -113,7 +115,7 @@ public class Text {
   }
 
   // Texto final apresentação balconista guilda
-  public static String fimApresentBalconista() {
+  public static String fimApresentacaoBalconista() {
       return "\n - Acho que te falei tudo que precisava meu pequeno feixe, boa sorte na sua aventura, espero poder te ver novamente em breve.\n";
   }
 
