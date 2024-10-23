@@ -1,6 +1,8 @@
 package Game;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
 
 import Game.ClassCharacters.Arqueiro;
 import Game.ClassCharacters.CreateCharacter;
@@ -13,14 +15,8 @@ import Game.ClassCharacters.Necromante;
 import Game.ClassCharacters.Personagens;
 import Game.ClassCharacters.Samurai;
 import Game.GunShops.GunShop;
-import Game.Invocation.Invocacao;
-import Game.Invocation.Planta;
-import Game.Items.Flecha;
 import Game.Monters.Monstro;
 import Game.Texts.Text;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Main {
 
@@ -46,48 +42,58 @@ public class Main {
         System.out.println(Text.cidadeInicial());
         System.out.println("Qual o seu nome ?\n");
         String nomePersonagem = scanner.next();
-        System.out.println(Text.escolhaPersonagem());
-        int escolha = scanner.nextInt();
         Personagens personagemEscolhido = null;
 
-        switch (escolha) {
-            case 1:         // NOME, HP, MP, ATK, DEF, HPR,MPR, V, XP, VATK, cast,range,CDR, nomeSkill                                
-                Samurai samurai = CreateCharacter.createSamurai();
-                personagemEscolhido = samurai;
-                break;
-            case 2:         // NOME, HP, MP, ATK, DEF, HPR, MPR, V, XP, VATK, castM, rangeM, CDR, nomeMagia (ADICIONAR )
-                Mago mago = CreateCharacter.createMago();
-                personagemEscolhido = mago;
-                break;
-            case 3: // NOME, HP, MP, ATK, DEF, HPR,MPR, V, XP, VATK, cast,range,CDR, nomeSkill // (PASSIVA: QUANTO MENOS VIDA TIVER, MAIS REGEN DE VIDA)
-                Guerreiro guerreiro = CreateCharacter.createGuerreiro();
-                personagemEscolhido = guerreiro;
-                break;
-
-            case 4: // NOME, HP, MP, ATK, DEF, HPR, MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill // (ALTERAR MECANICA, SÓ PODE BATER COM FELHA)
-                Arqueiro arqueiro = CreateCharacter.createArqueiro();
-                personagemEscolhido = arqueiro;
-                break;
-            case 5: // NOME, HP, MP, ATK, DEF, HPR, MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill// (PASSIVA: CAUSA CRITCO NO PRIMEIRO HIT)
-                Ladino ladino = CreateCharacter.createLadino();
-                personagemEscolhido = ladino;
-                break;
-            case 6: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill// (PASSIVA: (VAI POSSUIR UM ARSENAL DE "PLANTAS COM BASE NOS BROTOS (ZYRA)"))
-                Druida druida = CreateCharacter.createDruida();
-                personagemEscolhido = druida;
-                break;
-            case 7: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill, FÉ // (PASSIVA: A CADA MEDITAÇÃO, AUMENTA UMA QUANTIDADE DE FÉ,O DANO É BASEADO NA// FÉ)
-                Monge monge = CreateCharacter.createMonge();
-                personagemEscolhido = monge;
-                break;
-            case 8: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill, // trevas (DANO DAS INVOCAÇÕES AUMENTA COM BASE EM "TREVAS")
-                Necromante necromante = CreateCharacter.createNecromante();
-                personagemEscolhido = necromante;
-                break;
-            default:
-                System.out.println("\nOpção inválida. Escolha uma classe válida.");
-                break;
-        }
+        int error = 1;
+        do{
+            System.out.println(Text.escolhaPersonagem());
+            int escolha = scanner.nextInt();
+            switch (escolha) {
+                case 1:         // NOME, HP, MP, ATK, DEF, HPR,MPR, V, XP, VATK, cast,range,CDR, nomeSkill                                
+                    Samurai samurai = CreateCharacter.createSamurai();
+                    personagemEscolhido = samurai;
+                    error = 0;
+                    break;
+                case 2:         // NOME, HP, MP, ATK, DEF, HPR, MPR, V, XP, VATK, castM, rangeM, CDR, nomeMagia (ADICIONAR )
+                    Mago mago = CreateCharacter.createMago();
+                    personagemEscolhido = mago;
+                    error = 0;
+                    break;
+                case 3: // NOME, HP, MP, ATK, DEF, HPR,MPR, V, XP, VATK, cast,range,CDR, nomeSkill // (PASSIVA: QUANTO MENOS VIDA TIVER, MAIS REGEN DE VIDA)
+                    Guerreiro guerreiro = CreateCharacter.createGuerreiro();
+                    personagemEscolhido = guerreiro;
+                    error = 0;
+                    break;
+                case 4: // NOME, HP, MP, ATK, DEF, HPR, MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill // (ALTERAR MECANICA, SÓ PODE BATER COM FELHA)
+                    Arqueiro arqueiro = CreateCharacter.createArqueiro();
+                    personagemEscolhido = arqueiro;
+                    error = 0;
+                    break;
+                case 5: // NOME, HP, MP, ATK, DEF, HPR, MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill// (PASSIVA: CAUSA CRITCO NO PRIMEIRO HIT)
+                    Ladino ladino = CreateCharacter.createLadino();
+                    personagemEscolhido = ladino;
+                    error = 0;
+                    break;
+                case 6: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill// (PASSIVA: (VAI POSSUIR UM ARSENAL DE "PLANTAS COM BASE NOS BROTOS (ZYRA)"))
+                    Druida druida = CreateCharacter.createDruida();
+                    personagemEscolhido = druida;
+                    error = 0;
+                    break;
+                case 7: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill, FÉ // (PASSIVA: A CADA MEDITAÇÃO, AUMENTA UMA QUANTIDADE DE FÉ,O DANO É BASEADO NA// FÉ)
+                    Monge monge = CreateCharacter.createMonge();
+                    personagemEscolhido = monge;
+                    error = 0;
+                    break;
+                case 8: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill, // trevas (DANO DAS INVOCAÇÕES AUMENTA COM BASE EM "TREVAS")
+                    Necromante necromante = CreateCharacter.createNecromante();
+                    personagemEscolhido = necromante;
+                    error = 0;
+                    break;
+                default:
+                    System.out.println("\nOpção inválida. Escolha uma classe válida.");
+                    break;
+            }
+        }while(error != 0);
 
         personagemEscolhido.setDinheiro(100);
 

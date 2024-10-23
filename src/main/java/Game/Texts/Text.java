@@ -120,7 +120,7 @@ public class Text {
   }
 
   public static String visitaLoja() {
-      return "\nAcho que antes de ir para a dungeon, vou passar numa loja de armas para me equipar melhor.\nVocê caminha por 10 minutos ate encontrar uma loja de Equipamentos," + "e entra nela\n";
+      return "\n'Acho que antes de ir para a dungeon, vou passar numa loja de armas para me equipar melhor.'\n-Você caminha por 10 minutos ate encontrar uma loja de Equipamentos," + "e entra nela\n";
   }
 
   public static String entrarDungeon() {
