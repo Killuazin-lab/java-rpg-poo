@@ -14,6 +14,7 @@ import Game.ClassCharacters.Monge;
 import Game.ClassCharacters.Necromante;
 import Game.ClassCharacters.Personagens;
 import Game.ClassCharacters.Samurai;
+import Game.Dungeons.Dungeon;
 import Game.GunShops.GunShop;
 import Game.Monters.Monstro;
 import Game.Texts.Text;
@@ -33,7 +34,7 @@ public class Main {
         int indexAleatorio = random.nextInt(monstros.size());
         Monstro monstroEscolhido = monstros.get(indexAleatorio);
 
-        // Introduction
+        // Introdução
         System.out.println("************************************");
         System.out.println("Bem vindo ao RPG de texto em Java!");
         System.out.println("Prepare-se para uma aventura épica!");
@@ -159,5 +160,8 @@ public class Main {
         System.out.println("Dinheiro restante: " + personagemEscolhido.getDinheiro() + " moedas.");
         System.out.println("\n'Tudo certo, acho que ja é hora de desafiar a primeira dungeon!\n");
         System.out.println(Text.entrarDungeon());
+
+        Dungeon dungeon = new Dungeon(personagemEscolhido);
+        dungeon.combate();
     }
 }

@@ -1,34 +1,13 @@
 package Game.Monters;
 
-public class Monstro {
-    private String nome;
-    private int vida;
-    private int ataque;
-    private int defesa;
+import Game.ClassCharacters.Criatura;
+
+public class Monstro extends Criatura{
     private String habilidadeEspecial;
 
     public Monstro(String nome, int vida, int ataque, int defesa, String habilidadeEspecial) {
-        this.nome = nome;
-        this.vida = vida;
-        this.ataque = ataque;
-        this.defesa = defesa;
+        super(nome, vida, ataque, defesa);
         this.habilidadeEspecial = habilidadeEspecial;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getVida() {
-        return vida;
-    }
-
-    public int getAtaque() {
-        return ataque;
-    }
-
-    public int getDefesa() {
-        return defesa;
     }
 
     public String getHabilidadeEspecial() {
@@ -37,10 +16,10 @@ public class Monstro {
 
     @Override
     public String toString() {
-        return "Monstro: " + nome + "\n" +
-               "Vida: " + vida + "\n" +
-               "Ataque: " + ataque + "\n" +
-               "Defesa: " + defesa + "\n" +
+        return "Monstro: " + getNome() + "\n" +
+               "Vida: " + getVida() + "\n" +
+               "Ataque: " + getAtaque() + "\n" +
+               "Defesa: " + getDefesa() + "\n" +
                "Habilidade Especial: " + habilidadeEspecial + "\n";
     }
 }

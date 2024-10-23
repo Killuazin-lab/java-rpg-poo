@@ -7,55 +7,63 @@ import java.util.stream.Collectors;
 
 import Game.Dungeons.SistemaDrop;
 import Game.ClassCharacters.Personagens;
-import Game.Combatant.Combatente;
 import Game.Items.Item;
 import Game.Items.ReadyItems;
 import Game.Monters.Monstro;
 import Game.Monters.Monstros;
 
 public class Dungeon {
+    private ArrayList<Monstro> monstrosDungeon;
+    private Personagens personagemEscolhido;
 
-    // Gera de 5 a 6 Monstro aleatórios
-    public static ArrayList<Monstro> gerarMonstro() {
-        ArrayList<Monstro> MonstroDisponiveis = new ArrayList<Monstro>();
-        MonstroDisponiveis.add(Monstros.slime()); // Adicionar Monstro que você já criou
-        MonstroDisponiveis.add(Monstros.goblin());
-        MonstroDisponiveis.add(Monstros.dragao());
-        MonstroDisponiveis.add(Monstros.lobisomem());
-        MonstroDisponiveis.add(Monstros.demonio());
-        // etc...
-
-        Random random = new Random();
-        int quantidadeMonstro = random.nextInt(2) + 5; // Gera 5 ou 6 Monstro
-
-        ArrayList<Monstro> MonstroDungeon = new ArrayList<Monstro>();
-        for (int i = 0; i < quantidadeMonstro; i++) {
-            Monstro monstroAleatorio = MonstroDisponiveis.get(random.nextInt(MonstroDisponiveis.size()));
-            MonstroDungeon.add(monstroAleatorio);
-        }
-
-        return MonstroDungeon;
+    public Dungeon(Personagens personagemEscolhido){
+        this.monstrosDungeon = gerarMonstro();
+        this.personagemEscolhido = personagemEscolhido;
     }
 
-    // Ordena a lista de personagens e Monstro pela velocidade
-    public static ArrayList<Personagens> ordenarPorVelocidade(ArrayList<Personagens> personagens) {        
-        Collections.sort(personagens, (Combatente p1, Combatente p2) -> p2.getVelocidade() - p1.getVelocidade());        
-        return personagens;
+    private ArrayList<Monstro> gerarMonstro() {
+        ArrayList<Monstro> monstrosDisponiveis = new ArrayList<Monstro>();
+        monstrosDisponiveis.add(Monstros.slime()); 
+        monstrosDisponiveis.add(Monstros.slimeGrande());
+        monstrosDisponiveis.add(Monstros.goblin());
+        monstrosDisponiveis.add(Monstros.goblinXama());
+        monstrosDisponiveis.add(Monstros.dragao());
+        monstrosDisponiveis.add(Monstros.dragaoRei());
+        monstrosDisponiveis.add(Monstros.lobo());
+        monstrosDisponiveis.add(Monstros.lobisomem());
+        monstrosDisponiveis.add(Monstros.demonio());
+        monstrosDisponiveis.add(Monstros.demonioRei());
+
+        Random random = new Random();
+        int quantidadeMonstro = random.nextInt(2) + 5;
+
+        ArrayList<Monstro> monstrosDungeon = new ArrayList<Monstro>();
+        for (int i = 0; i < quantidadeMonstro; i++) {
+            Monstro monstroAleatorio = monstrosDisponiveis.get(random.nextInt(monstrosDisponiveis.size()+1));
+            monstrosDungeon.add(monstroAleatorio);
+        }
+        return monstrosDungeon;
     }
 
     // Sistema de combate por turnos
-    public static void combate(Personagens personagemEscolhido, ArrayList<Monstro> Monstro) {
-        ArrayList<Personagens> Combatentes = new ArrayList<Personagens>();
-        Combatentes.add(personagemEscolhido);
-        Combatentes.addAll(Monstro.stream().map(m -> (Personagens) m).collect(Collectors.toList())); // Adiciona os Monstro como Combatentes
+    public void combate() {
+        CharacterMonsterDTO characterMonsterDTO = new CharacterMonsterDTO(this.personagemEscolhido, this.monstrosDungeon);
+        ArrayList<CharacterMonsterDTO> combatentes = new ArrayList<CharacterMonsterDTO>();
+        combatentes.add(characterMonsterDTO);
+        System.out.println(combatentes.size());
+        for(CharacterMonsterDTO combantente : combatentes){
+            System.out.println(combantente);
+        }
 
-        // Ordenar por velocidade
-        Combatentes = ordenarPorVelocidade(Combatentes);
+
+        
+        /*  Ordenar por velocidade
+        personagens = ordenarPorVelocidade(personagens);
 
         boolean emCombate = true;
 
         while (emCombate) {
-            for (Personagens Combatente : Combatentes) {
+            for (Personagens Combatente : personagens) {
                 if (Combatente instanceof Monstro) {
                     // Monstro ataca o herói
                     System.out.println(Combatente.getNome() + " ataca o herói!");
@@ -88,5 +96,6 @@ public class Dungeon {
             // Herói recupera um pouco de vida e mana após cada turno
             personagemEscolhido.recuperarVida(10); // Exemplo: Recupera 10 de vida por turno
             personagemEscolhido.recuperarMana(5); // Exemplo: Recupera 5 de mana por turno
-        }
+        }*/
     }
+}
