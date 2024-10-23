@@ -96,17 +96,12 @@ public class Main {
         }while(error != 0);
 
         personagemEscolhido.setDinheiro(100);
-
-        if (personagemEscolhido == null) {
-            System.out.println("erro ao escolher personagem, informe um numero valido");
-        }
-        
-        System.out.println("\nDigite o nome do personagem:\n");
         personagemEscolhido.setNome(nomePersonagem);
+
         System.out.println("\nDeseja ver os atributos do seu personagem ?\n1. Sim\n2. Não\n");
         int escolhaPrincipal = scanner.nextInt();
         if (escolhaPrincipal == 1) {
-            System.out.println("\nAtributos iniciais da classe escolihda: \n");
+            System.out.println("\nAtributos iniciais da classe escolhida: \n");
             System.out.println("\n" + personagemEscolhido);
             System.out.println("\n************************************");
         }
@@ -114,12 +109,12 @@ public class Main {
         System.out.println(Text.posRegistro());
 
         // Dúvidas do jogador
-        System.out.println("\nDeseja uma explicação de como funciona as Dungeons ?\n1. Sim\n2. Não\n");
+        System.out.println("\nDeseja uma explicação de como funciona as dungeons ?\n1. Sim\n2. Não\n");
         escolhaPrincipal = scanner.nextInt();
         if (escolhaPrincipal == 1){
             System.out.println(Text.explicarDungeons());
         }
-        System.out.println("Antes de desbravar as dungeopns, tem mais alguma dúvida?\n1. Sim\n2. Não\n");
+        System.out.println("Antes de desbravar as dungeons, tem mais alguma dúvida?\n1. Sim\n2. Não\n");
         escolhaPrincipal = scanner.nextInt();
         if (escolhaPrincipal == 1){
             while (escolhaPrincipal != 0){

@@ -17,7 +17,6 @@ public class GunShop {
         System.out.println("5. Espada Grande - 150 moedas");
         System.out.println("6. Martelo da Forja - 130 moedas");
         System.out.println("7. Cetro de Magias - 125 moedas");
-        System.out.println("\n Dinheiro atual: " + personagem.getDinheiro() + " moedas.");
 
         Scanner scanner = new Scanner(System.in);
         int escolha = scanner.nextInt();
