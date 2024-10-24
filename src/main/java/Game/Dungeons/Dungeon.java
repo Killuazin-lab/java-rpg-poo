@@ -68,25 +68,26 @@ public class Dungeon {
 
         ordenarMonstros();
 
-        System.out.println("CARA ou COROA?\nEscolha:\n1. Cara\n2. Coroa");
-        int caraCoroa = scanner.nextInt();
-        caraCoroa = caraCoroa - 1;
-        int escolhaCaraCoroa = random.nextInt(2);
-        boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
 
-        if(personagemComeca){
-            System.out.println(personagemEscolhido.getNome() + "começa!");
-        }else{
-            System.out.println("O monstro começa!");
-        }
 
         int round = 0;
-
-        // Decidir o round da ultimate do monstro
-        int roundUltimate = random.nextInt(7);
-        boolean monstroUltimate = roundUltimate == round;
-
         for(Monstro monstro: monstrosDungeon){
+            System.out.println("CARA ou COROA?\nEscolha:\n1. Cara\n2. Coroa");
+            int caraCoroa = scanner.nextInt();
+            caraCoroa = caraCoroa - 1;
+            int escolhaCaraCoroa = random.nextInt(2);
+            boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
+    
+            if(personagemComeca){
+                System.out.println(personagemEscolhido.getNome() + "começa!");
+            }else{
+                System.out.println("O monstro começa!");
+            }
+
+            // Decidir o round da ultimate do monstro
+            int roundUltimate = random.nextInt(7);
+            boolean monstroUltimate = roundUltimate == round;
+            
             // ESCREVER UMA CONTINUAÇÃO DA HISTORIA ANTES DE IR PARA O PROXIMO MONSTRO
             // PERSONAGEM ACHA NOVOS ITENS NO CAMINHO PARA SEREM EQUIPADOS
             // REGENERAR VIDA ANTES DE LUTAR NOVAMENTE 
