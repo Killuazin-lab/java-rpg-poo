@@ -5,8 +5,9 @@ import Game.ClassCharacters.Criatura;
 public class Monstro extends Criatura{
     private String habilidadeEspecial;
 
-    public Monstro(String nome, int vida, int ataque, int defesa, String habilidadeEspecial) {
-        super(nome, vida, ataque, defesa);
+    public Monstro(String nome, int vida, int ataque, int defesa,
+                   String habilidadeEspecial, int ataqueHabilidadeEspecial) {
+        super(nome, vida, ataque, defesa, ataqueHabilidadeEspecial);
         this.habilidadeEspecial = habilidadeEspecial;
     }
 

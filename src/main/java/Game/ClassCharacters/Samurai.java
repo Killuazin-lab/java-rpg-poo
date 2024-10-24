@@ -12,9 +12,9 @@ public class Samurai extends Personagens {
     private String[] habilidades; // lista de habilidades do samurai
 
     public Samurai(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
-                   int velocidadeAtaque, int tempoConjuracaoHabilidade, 
-                   int alcanceAtaque, int tempoRecargaHabilidades, String[] habilidades) {
-        super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade); // Chama o construtor da classe mãe
+                   int velocidadeAtaque, int tempoConjuracaoHabilidade, int alcanceAtaque,
+                   int tempoRecargaHabilidades, int ataqueHabilidadeEspecial, String[] habilidades) {
+        super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade, ataqueHabilidadeEspecial); // Chama o construtor da classe mãe
         this.Classe = "Samurai";
         this.porcentagemXpGanho = porcentagemXpGanho;
         this.velocidadeAtaque = velocidadeAtaque;

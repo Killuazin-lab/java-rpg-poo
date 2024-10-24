@@ -126,6 +126,12 @@ public class Text {
   public static String entrarDungeon() {
       return "Depois de se despedir de seus amigos, você segue em direção a Dungeon, e em meio dia de caminhada, você finalmente chega e adentra na Dungeon ";
   }
-  // Outros textos...
+
+  public static String ataquesDisponiveis(){
+    return "\nTipos de ataque:\n" +
+        "1. Usar item\n" +
+        "2. Usar Habilidade" + 
+        "3. Socar";
+  }
 }
 

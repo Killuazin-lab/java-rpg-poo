@@ -13,8 +13,8 @@ public class Mago extends Personagens {
 
     public Mago(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana , int velocidade, int porcentagemXpGanho,
                 int velocidadeAtaque, int tempoConjuracaoMagia, 
-                int alcanceMagia, int tempoRecargaMagias, String[] magias) {
-        super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade); // Chama o construtor da classe mãe
+                int alcanceMagia, int tempoRecargaMagias, int ataqueHabilidadeEspecial, String[] magias) {
+        super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade, ataqueHabilidadeEspecial); // Chama o construtor da classe mãe
         this.Classe = "Mago";
         this.porcentagemXpGanho = porcentagemXpGanho;
         this.velocidadeAtaque = velocidadeAtaque;

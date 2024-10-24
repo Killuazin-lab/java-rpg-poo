@@ -10,8 +10,8 @@ public class CreateCharacter {
     Samurai samurai = new Samurai("Samurai",
                                   100, 50, 70, 60,3,
                                   5, 2, 3,
-                                  1, 2,
-                                  1,2, 
+                                  1, 2, 
+                                  1,2, 100,
                                   new String[] {"Corte Rápido", "Postura Defensiva"}); 
     return samurai;
   }
@@ -21,7 +21,7 @@ public class CreateCharacter {
                         80, 200, 40, 30, 3,
                         5, 2, 1,
                         1, 2,
-                        4, 5,
+                        4, 5, 100,
                         new String[] {"Bola de Fogo", "Tiro de Gelo"});
     return mago;
   }
@@ -32,7 +32,7 @@ public class CreateCharacter {
                                         70, 4, 1, 1,
                                         1, 1,
                                         2, 1,
-                                        2, 
+                                        2, 100,
                                         new String[] {"Golpe Brutal", "Escudo Protetor"});
     return guerreiro;
   }
@@ -43,7 +43,7 @@ public class CreateCharacter {
                                     50, 2, 2, 1,
                                     1, 1,
                                     3, 5,
-                                    2, 
+                                    2, 100,
                                     new String[] {"Tiro Certeiro", "Tiro Duplo"});
     arqueiro.adicionarFlechaNaBolsa(new Flecha("Flecha Normal", 10, 5, 10));
     arqueiro.adicionarFlechaNaBolsa(new Flecha("Flecha Explosiva", 20, 10, 5));
@@ -56,7 +56,7 @@ public class CreateCharacter {
                               1, 2, 1,
                               2, 3,
                               1, 2,
-                              2, 
+                              2, 100,
                               new String[] {"Golpe Furtivo", "Fuga das Sombras"});
     return ladino;
   }
@@ -67,7 +67,7 @@ public class CreateCharacter {
                               2, 3, 1,
                               1, 2,
                               2, 4,
-                              3,
+                              3,100,
                               new String[] {"Crescer Semente", "Aura Curativa"});
     Planta espinheiro = new Planta("Espinheiro", 40, 10, 5, 3);
     System.out.println("\nO Druida começou com uma planta:"); 
@@ -82,7 +82,7 @@ public class CreateCharacter {
                             2, 2, 1,
                             1, 1,
                             3, 1,
-                            1, 100,
+                            1, 100, 100,
                             new String[] {"Golpe de Fé", "Meditação"});
     return monge;
   }
@@ -93,7 +93,7 @@ public class CreateCharacter {
                                           4, 4, 1,
                                           1, 2,
                                           2, 3,
-                                          1, 120,
+                                          1, 120, 100,
                                           new String[] {"Invocação de Cadaver", "Comandar Cadaver"});
     Invocacao pequenoZumbi = new Invocacao("Pequeno Zumbi", 50, 10, 5, 5);
     necromante.adicionarInvocacao(pequenoZumbi);

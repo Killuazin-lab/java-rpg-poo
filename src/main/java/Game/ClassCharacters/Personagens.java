@@ -18,8 +18,9 @@ public class Personagens extends Criatura{
     private ArrayList<Habilidade> habilidades;  // Lista de habilidades desbloqueadas
     protected ArrayList<Item> itensEquipados;
 
-    public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana, int velocidade) {
-        super(nome, regenVida, ataque, defesa);
+    public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida,
+                       int regenMana, int velocidade, int ataqueHabilidadeEspecial) {
+        super(nome, regenVida, ataque, defesa, ataqueHabilidadeEspecial);
         this.mana = mana;
         this.regenVida = regenVida;
         this.regenMana = regenMana;

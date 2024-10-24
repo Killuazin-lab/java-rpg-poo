@@ -3,14 +3,17 @@ package Game.Dungeons;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import Game.Dungeons.SistemaDrop;
+import Game.ClassCharacters.Criatura;
 import Game.ClassCharacters.Personagens;
 import Game.Items.Item;
 import Game.Items.ReadyItems;
 import Game.Monters.Monstro;
 import Game.Monters.Monstros;
+import Game.Texts.Text;
 
 public class Dungeon {
     private ArrayList<Monstro> monstrosDungeon;
@@ -44,58 +47,89 @@ public class Dungeon {
         }
         return monstrosDungeon;
     }
+    
+    private void ordenarMonstros(){
+        // Bubble Sort -> Ordenar monstro por ataque (menor -> maior)
+        for(int i = 0; i < this.monstrosDungeon.size() - 1; i++){
+            for(int j = 0; j < this.monstrosDungeon.size() - 1 - i; j++){
+                if(this.monstrosDungeon.get(j).getAtaque() > this.monstrosDungeon.get(j + 1).getAtaque()){
+                    Monstro temp = this.monstrosDungeon.get(j);
+                    this.monstrosDungeon.set(j, this.monstrosDungeon.get(j + 1));
+                    this.monstrosDungeon.set(j + 1, temp);
+                }
+            }
+        }
+    }
 
     // Sistema de combate por turnos
     public void combate() {
-        CharacterMonsterDTO characterMonsterDTO = new CharacterMonsterDTO(this.personagemEscolhido, this.monstrosDungeon);
-        ArrayList<CharacterMonsterDTO> combatentes = new ArrayList<CharacterMonsterDTO>();
-        combatentes.add(characterMonsterDTO);
-        System.out.println(combatentes.size());
-        for(CharacterMonsterDTO combantente : combatentes){
-            System.out.println(combantente);
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        ordenarMonstros();
+
+        System.out.println("CARA ou COROA?\nEscolha:\n1. Cara\n2. Coroa");
+        int caraCoroa = scanner.nextInt();
+        caraCoroa = caraCoroa - 1;
+        int escolhaCaraCoroa = random.nextInt(2);
+        boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
+
+        if(personagemComeca){
+            System.out.println(personagemEscolhido.getNome() + "começa!");
+        }else{
+            System.out.println("O monstro começa!");
         }
 
+        int round = 0;
 
-        
-        /*  Ordenar por velocidade
-        personagens = ordenarPorVelocidade(personagens);
+        // Decidir o round da ultimate do monstro
+        int roundUltimate = random.nextInt(7);
+        boolean monstroUltimate = roundUltimate == round;
 
-        boolean emCombate = true;
+        for(Monstro monstro: monstrosDungeon){
+            // ESCREVER UMA CONTINUAÇÃO DA HISTORIA ANTES DE IR PARA O PROXIMO MONSTRO
+            // PERSONAGEM ACHA NOVOS ITENS NO CAMINHO PARA SEREM EQUIPADOS
+            // REGENERAR VIDA ANTES DE LUTAR NOVAMENTE 
+            while(personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
+               System.out.println("Round " + round + ". FIGHT!"); 
 
-        while (emCombate) {
-            for (Personagens Combatente : personagens) {
-                if (Combatente instanceof Monstro) {
-                    // Monstro ataca o herói
-                    System.out.println(Combatente.getNome() + " ataca o herói!");
-                    personagemEscolhido.receberDano(Combatente.getAtaque());
-                    if (personagemEscolhido.getVida() <= 0) {
-                        System.out.println("O herói foi derrotado!");
-                        emCombate = false;
+               if(personagemComeca){
+                System.out.println(Text.ataquesDisponiveis());
+                int escolhaAtaque = scanner.nextInt();
+
+                // Ataque do personagem
+                switch (escolhaAtaque) {
+                    case 1:
+                        System.out.println(personagemEscolhido.getNome() + "atacou com um martelo.");
+                        monstro.sofrerDano(personagemEscolhido.getAtaque());
                         break;
-                    }
-                } else {
-                    // Herói ataca monstro
-                    Monstro monstro = Monstro.get(0); // Seleciona o primeiro monstro
-                    System.out.println("Herói ataca " + monstro.getNome());
-                    monstro.receberDano(personagemEscolhido.getAtaque());
+                    case 2:
+                        System.out.println(personagemEscolhido.getNome() + "usou sua habilidade.");
+                        monstro.sofrerDano(personagemEscolhido.getAtaque());
+                        break;
+                    case 3:
+                        System.out.println(personagemEscolhido.getNome() + "deu um socão!");
+                        monstro.sofrerDano(personagemEscolhido.getAtaque());
+                        break;
 
-                    if (monstro.getVida() <= 0) {
-                        System.out.println(monstro.getNome() + " foi derrotado!");
-                        Monstro.remove(monstro); // Remove o monstro derrotado
-                        SistemaDrop.verificarDrop(personagemEscolhido);
-
-                        if (Monstro.isEmpty()) {
-                            System.out.println("Todos os Monstro foram derrotados! A dungeon está limpa.");
-                            emCombate = false;
-                            break;
-                        }
-                    }
+                    default:
+                        System.out.println("Escolha uma opção válida!");
+                        break;
                 }
-            }
 
-            // Herói recupera um pouco de vida e mana após cada turno
-            personagemEscolhido.recuperarVida(10); // Exemplo: Recupera 10 de vida por turno
-            personagemEscolhido.recuperarMana(5); // Exemplo: Recupera 5 de mana por turno
-        }*/
+                if(monstroUltimate){
+                    System.out.println("MONSTER ULTIMATE!" +
+                     "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
+                    personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
+                }else{
+                    System.out.println("Prepare-se! O monstro irá atacar!");
+                    personagemEscolhido.sofrerDano(monstro.getAtaque());
+                }
+                round = round + 1;
+               }else{
+                System.out.println("Programar a lógica para o monstro começando.");
+               }
+            }
+        } 
     }
 }

@@ -19,8 +19,8 @@ public class Druida extends Personagens {
 
     public Druida(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
                   int velocidadeAtaque, int tempoConjuracaoPoder, 
-                  int alcancePoder, int tempoRecargaPoderes, String[] poderes) {
-        super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade);
+                  int alcancePoder, int tempoRecargaPoderes, int ataqueHabilidadeEspecial, String[] poderes) {
+        super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade, ataqueHabilidadeEspecial);
         this.Classe = "Druida";
         this.porcentagemXpGanho = porcentagemXpGanho;
         this.velocidadeAtaque = velocidadeAtaque;

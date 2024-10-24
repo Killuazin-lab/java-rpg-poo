@@ -18,8 +18,8 @@ public class Necromante extends Personagens {
 
     public Necromante(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana, int velocidade, int porcentagemXpGanho,
                       int velocidadeAtaque, int tempoConjuracaoHabilidade, 
-                      int alcanceAtaque, int tempoRecargaHabilidades, int energiaDasTrevas, String[] habilidades) {
-        super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade);
+                      int alcanceAtaque, int tempoRecargaHabilidades, int energiaDasTrevas, int ataqueHabilidadeEspecial, String[] habilidades) {
+        super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade, ataqueHabilidadeEspecial);
         this.Classe = "Necromante";
         this.porcentagemXpGanho = porcentagemXpGanho;
         this.velocidadeAtaque = velocidadeAtaque;
