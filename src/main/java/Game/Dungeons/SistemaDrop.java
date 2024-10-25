@@ -40,7 +40,8 @@ public class SistemaDrop {
         itensIncomum.add(ReadyItems.espadaGrande());  
         itensIncomum.add(ReadyItems.marteloDaForja());
         itensIncomum.add(ReadyItems.cetroDeMagias());
-
+        itensIncomum.add(ReadyItems.escudoDeDiamante());
+        itensIncomum.add(ReadyItems.botasDeVento());
         return selecionarItemAleatorio(itensIncomum);
     }
 
@@ -58,7 +59,9 @@ public class SistemaDrop {
         itensEpico.add(ReadyItems.tridenteDeAarlen()); 
         itensEpico.add(ReadyItems.katanaDeVento());
         itensEpico.add(ReadyItems.foiceDeAarfeus());
-
+        itensEpico.add(ReadyItems.armaduraDemoniaca());
+        itensEpico.add(ReadyItems.capaceteDeAarfeus());
+        itensEpico.add(ReadyItems.botasDraconicas());
         return selecionarItemAleatorio(itensEpico);
     }
 
