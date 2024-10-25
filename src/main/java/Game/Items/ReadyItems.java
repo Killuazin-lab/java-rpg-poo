@@ -31,7 +31,15 @@ public class ReadyItems {
   public static Item cetroDeMagias() {
       return new Item("Cetro de Magias", "Cetro utilizado por aqueles que possuem afinidade com magia elementar.", 70, 0, 50, 50, 0, 0);
   }
-  
+
+   // Escudo de Diamante  (Item Incomum)
+  public static Item escudoDeDiamante() {
+      return new Item("Escudo de Diamante", "Escudo de diamante feito por ferreiros e forjadores execepcionais", 30, 90, 75, 0, 0, 0);
+  }
+   // Botas de vento (Item Incomum)
+  public static Item botasDeVento() {
+      return new Item("Botas de Vento", "Botas feitas pelos ferreiros das névoas, fornecem velocidade e proteção.", 10, 40, 30, 0, 75, 0);
+  }
     // Cajado da Escurdao (Item raro)
   public static Item cajadoDaEscuridao() {
       return new Item("Cajado da Escuridao", "Cajado que utiliza de forças obscuras desconhecidas para atormentar a alma do adversario", 110, 70, -50, 30, 0, 0); 
@@ -61,7 +69,22 @@ public class ReadyItems {
   public static Item foiceDeAarfeus() {
       return new Item("Foice De Aarfeus", "Foice utilizada por Aarfeus na guerra pelo trono de Lorde, sua força é tamanha por conta de sua lâmina, feita com sangue de demônios ancestrais", 210, 100, 200, 0, 0, 0);
   }
-  
+
+  // Armadura Demoniaca (Item Épico) 
+  public static Item armaduraDemoniaca() {
+      return new Item("Armadura Demoniaca", "Uma armadura forjada por demonios ferreiros, responsaveis pelos equipamentos utilizados por Aarfeus em sua conquista.", 50, 200, 100, 60, 50, 0);
+  } 
+
+   // Capacete de Aarfeus (Item Épico)
+  public static Item capaceteDeAarfeus() {
+      return new Item("Capacete de Aarfeus", "Elmo lendário que Aarfeus utilizou em sua conquista, está rachado, porém possui altíssima proteção, aumento de Mana e velocidade..", 55, 150, 200, 200, 100, 0);
+  }
+
+  // Botas Draconicas (Item Épico)
+  public static Item botasDraconicas() {
+      return new Item("Botas Dracônicas", "Botas utilizadas pelos dragões anciões, reza a lenda que se pareciam com humanos.", 50, 100, 100, 50, 200, 0);
+  }
+ 
     // Adaga da Fé (Item Místico) USO UNICO NO GAME, ARMA HITKILL EM QUALQUER INIMIGO, INCLUSIVE BOSS FINAL, TEM Q SER MT RARA //VAI SER USO UNICO
   public static Item adagaDaFe() {
       return new Item("Adaga da Fé", "Adaga forjada pelo primeiro Lorde, sua lâmina é radiante, seu poder é infinito, porém seu uso é único.", 1000000, 0, 0, 0, 0, 0); 
