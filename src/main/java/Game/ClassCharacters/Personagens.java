@@ -58,7 +58,7 @@ public class Personagens extends Criatura{
 
     public void desbloquearNovaHabilidade() {
         // Exemplo de habilidade nova
-        Habilidade novaHabilidade = new Habilidade("Golpe Poderoso", "Causa um dano massivo", 50.0, 20.0, 3);
+        Habilidade novaHabilidade = new Habilidade("Golpe Poderoso", "Causa um dano massivo", 50, 20, 3);
         habilidades.add(novaHabilidade);
         System.out.println(getNome() + " desbloqueou a habilidade: " + novaHabilidade.getNome() + "\n");
     }

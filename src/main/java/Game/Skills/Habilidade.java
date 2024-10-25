@@ -3,12 +3,12 @@ package Game.Skills;
 public class Habilidade {
     private String nome;
     private String descricao;
-    private Double dano;
-    private Double custoMana;
+    private int dano;
+    private int custoMana;
     private int tempoRecarga;  // Turnos para recarregar
     private int turnosRestantesRecarga;  // Turnos restantes para poder usar a habilidade novamente
 
-    public Habilidade(String nome, String descricao, Double dano, Double custoMana, int tempoRecarga) {
+    public Habilidade(String nome, String descricao, int dano, int custoMana, int tempoRecarga) {
         this.nome = nome;
         this.descricao = descricao;
         this.dano = dano;
@@ -25,10 +25,10 @@ public class Habilidade {
         return descricao;
     }
 
-    public Double getDano() {
+    public int getDano() {
         return dano;
     }
-    public Double getCustoMana() {
+    public int getCustoMana() {
         return custoMana;
     }
 
