@@ -1,7 +1,7 @@
 package Game.Items;
 // nome, descricao, aumentoAtaque, aumentoDefesa, aumentoVida, aumentoMana,  aumentoVelocidade, debuf
 public class ReadyItems {
-
+ //DIMINIU O DANO DESSAS PORRAS MANO
   // Item espada de aço (Item comum)
   public static Item espadaDeAco() {
       return new Item("Espada de Aço", "Uma espada media feita de aço ", 100, 0, 0, 20, 0, 0);  // Aumenta ataque

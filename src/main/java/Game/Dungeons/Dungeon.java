@@ -85,14 +85,14 @@ public class Dungeon {
             }
 
             // Decidir o round da ultimate do monstro
-            int roundUltimate = random.nextInt(7);
+            int roundUltimate = random.nextInt(10);
             boolean monstroUltimate = roundUltimate == round;
             
             // ESCREVER UMA CONTINUAÇÃO DA HISTORIA ANTES DE IR PARA O PROXIMO MONSTRO
             // PERSONAGEM ACHA NOVOS ITENS NO CAMINHO PARA SEREM EQUIPADOS
             // REGENERAR VIDA ANTES DE LUTAR NOVAMENTE 
             while(personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
-               System.out.println("Round " + round + ". FIGHT!"); 
+               System.out.println("Turno " + round + ". FIGHT!"); 
 
                if(personagemComeca){
                 System.out.println(Text.ataquesDisponiveis());
@@ -101,20 +101,24 @@ public class Dungeon {
                 // Ataque do personagem
                 switch (escolhaAtaque) {
                     case 1:
-                        System.out.println(personagemEscolhido.getNome() + "atacou com um martelo.");
+                        //aqui o personagem usa o seu ataque comum, vulgo 1 skill dele, no caso seria a skill de criação
+                        System.out.println("\n" + personagemEscolhido.getNome() + "atacou com sua arma.");
                         monstro.sofrerDano(personagemEscolhido.getAtaque());
                         break;
                     case 2:
-                        System.out.println(personagemEscolhido.getNome() + "usou sua habilidade.");
+                        System.out.println("\n" + personagemEscolhido.getNome() + "usou sua habilidade.");
                         monstro.sofrerDano(personagemEscolhido.getAtaque());
                         break;
                     case 3:
-                        System.out.println(personagemEscolhido.getNome() + "deu um socão!");
+                        System.out.println("\n" + personagemEscolhido.getNome() + "deu um socão!");
                         monstro.sofrerDano(personagemEscolhido.getAtaque());
                         break;
+                    
+                    case 4:
+                        System.out.println("\nVocê escolheu fugir da luta, e consequentemente, sair da Dungeon");
 
                     default:
-                        System.out.println("Escolha uma opção válida!");
+                        System.out.println("\nEscolha uma opção válida!");
                         break;
                 }
 
@@ -123,12 +127,12 @@ public class Dungeon {
                      "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
                     personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
                 }else{
-                    System.out.println("Prepare-se! O monstro irá atacar!");
+                    System.out.println("\nPrepare-se! O monstro irá atacar!");
                     personagemEscolhido.sofrerDano(monstro.getAtaque());
                 }
                 round = round + 1;
                }else{
-                System.out.println("Programar a lógica para o monstro começando.");
+                System.out.println("\nProgramar a lógica para o monstro começando.");
                }
             }
         } 

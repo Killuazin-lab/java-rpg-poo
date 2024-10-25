@@ -49,26 +49,27 @@ public class Personagens extends Criatura{
         System.out.println("Experiência necessária para o próximo nível: " + experienciaProximoNivel + "\n");
 
 // Verificar se há uma habilidade específica para desbloquear no nível atual
-    Habilidade novaHabilidade = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.getClass().getSimpleName(), nivel);
-        if (novaHabilidade != null) {
-            habilidades.add(novaHabilidade);
-            System.out.println(getNome() + " desbloqueou a habilidade: " + novaHabilidade.getNome());
+    Habilidade novaHabilidadeUnica = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.getClass().getSimpleName(), nivel);
+        if (novaHabilidadeUnica != null) {
+            habilidades.add(novaHabilidadeUnica);
+            System.out.println("\n" + getNome() + " desbloqueou a habilidade: " + novaHabilidadeUnica.getNome());
         }
     }
 
-    public void desbloquearNovaHabilidade() {
-        // Exemplo de habilidade nova
-        Habilidade novaHabilidade = new Habilidade("Golpe Poderoso", "Causa um dano massivo", 50, 20, 3);
-        habilidades.add(novaHabilidade);
-        System.out.println(getNome() + " desbloqueou a habilidade: " + novaHabilidade.getNome() + "\n");
-    }
 
     public void usarHabilidade(int indiceHabilidade) {
         if (indiceHabilidade < habilidades.size()) {
             Habilidade habilidade = habilidades.get(indiceHabilidade);
             if (mana >= habilidade.getCustoMana()) {
-                habilidade.usarHabilidade();
-                mana -= habilidade.getCustoMana();
+            // Cálculo do dano total: dano da habilidade + ataque do personagem
+            int danoTotal = this.ataque + habilidade.getDano();
+
+            // Exibe a mensagem com o nome da habilidade e o dano total causado
+            System.out.println(this.nome + " usou " + habilidade.getNome() + " e causou " + danoTotal + " de dano!");
+
+            // Reduz o custo da mana do personagem
+            mana -= habilidade.getCustoMana();
+            
             } else {
                 System.out.println("Mana insuficiente para usar " + habilidade.getNome() + "\n");
             }
