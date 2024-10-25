@@ -27,15 +27,15 @@ public class Dungeon {
     private ArrayList<Monstro> gerarMonstro() {
         ArrayList<Monstro> monstrosDisponiveis = new ArrayList<Monstro>();
         monstrosDisponiveis.add(Monstros.slime()); 
-        monstrosDisponiveis.add(Monstros.slimeGrande());
+        monstrosDisponiveis.add(Monstros.slimeDeMusgo());
         monstrosDisponiveis.add(Monstros.goblin());
         monstrosDisponiveis.add(Monstros.goblinXama());
         monstrosDisponiveis.add(Monstros.dragao());
-        monstrosDisponiveis.add(Monstros.dragaoRei());
-        monstrosDisponiveis.add(Monstros.lobo());
-        monstrosDisponiveis.add(Monstros.lobisomem());
-        monstrosDisponiveis.add(Monstros.demonio());
-        monstrosDisponiveis.add(Monstros.demonioRei());
+        monstrosDisponiveis.add(Monstros.dragaoFlamejante());
+        monstrosDisponiveis.add(Monstros.loboDePedra());
+        monstrosDisponiveis.add(Monstros.lobisomemDePedra());
+        monstrosDisponiveis.add(Monstros.demonioDaEscuridao());
+        monstrosDisponiveis.add(Monstros.demonioFlamejante());
 
         Random random = new Random();
         int quantidadeMonstro = random.nextInt(2) + 5;
