@@ -5,7 +5,7 @@ public class Monstros {
   public static Monstro slime() {
       return new Monstro("Slime", 150, 10, 50, "Dissolve armadura", 100); 
   } 
-    public static Monstro slimeGrande() {
+    public static Monstro slimeDeMusgo() {
       return new Monstro("Slime Grande", 350, 100, 50, "Dissolve armadura e Provoca Lentidão", 100); 
   }    
     public static Monstro goblin() {
@@ -17,19 +17,19 @@ public class Monstros {
     public static Monstro dragao() {
       return new Monstro("Dragão", 100, 30, 0, "Provoca Queimaduras", 100); 
   } 
-    public static Monstro dragaoRei() {
+    public static Monstro dragaoFlamejante() {
       return new Monstro("Dragão Rei", 350, 120, 10, "Queima armaduras", 100); 
   }
-    public static Monstro lobo() {
+    public static Monstro loboDePedra() {
       return new Monstro("Lobo", 120, 35, 20, "Provoca sangramento", 100); 
   }
-    public static Monstro lobisomem() {
+    public static Monstro lobisomemDePedra() {
       return new Monstro("Lobisomem", 300, 150, 10, "Provoca sangramento profundo", 100); 
   } 
-    public static Monstro demonio() {
+    public static Monstro demonioDaEscuridao() {
       return new Monstro("Demonio", 200, 30, 10, "Invoca chamas para queimar", 100); 
   } 
-    public static Monstro demonioRei() {
+    public static Monstro demonioFlamejante() {
     return new Monstro("Demonio Rei", 450, 150, 30, "Usa da maldição de Aarfeus para queimar o oponente.", 100); 
   }
 }
