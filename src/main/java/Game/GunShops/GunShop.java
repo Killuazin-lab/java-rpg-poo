@@ -17,7 +17,9 @@ public class GunShop {
         System.out.println("5. Espada Grande - 150 moedas");
         System.out.println("6. Martelo da Forja - 130 moedas");
         System.out.println("7. Cetro de Magias - 125 moedas");
-
+        System.out.println("8. Escudo de Diamante - 140 moedas");
+        System.out.println("9. Botas de Vento - 135 moedas");
+        
         Scanner scanner = new Scanner(System.in);
         int escolha = scanner.nextInt();
 
@@ -52,6 +54,16 @@ public class GunShop {
             case 7:
                 if (personagem.gastarDinheiro(125)) {
                     personagem.equiparItem(ReadyItems.cetroDeMagias());
+                }
+                break;
+            case 8:
+                if (personagem.gastarDinheiro(140)) {
+                    personagem.equiparItem(ReadyItems.escudoDeDiamante());
+                }
+                break;
+            case 9:
+                if (personagem.gastarDinheiro(135)) {
+                    personagem.equiparItem(ReadyItems.botasDeVento());
                 }
                 break;
             default:
