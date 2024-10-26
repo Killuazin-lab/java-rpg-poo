@@ -70,37 +70,19 @@ public class Dungeon {
 
         int round = 0;
         for(Monstro monstro: monstrosDungeon){
-            System.out.println("CARA ou COROA?\n1. Cara\n2. Coroa");
-            int caraCoroa = scanner.nextInt();
-            caraCoroa = caraCoroa - 1;
-            int escolhaCaraCoroa = random.nextInt(2);
-            boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
-    
-            if(personagemComeca){
-                System.out.println(personagemEscolhido.getNome() + "começa!");
-            }else{
-                System.out.println("O monstro começa!");
-            }
+            boolean personagemComeca = caraCoroa(personagemEscolhido, monstro);
+            int roundUltimateMonstro = roundUltimateMonstro(round);
 
-            // Decidir o round da ultimate do monstro
-            int roundUltimate = random.nextInt(10);
-            boolean monstroUltimate = roundUltimate == round;
-            
-            // ESCREVER UMA CONTINUAÇÃO DA HISTORIA ANTES DE IR PARA O PROXIMO MONSTRO
-            // PERSONAGEM ACHA NOVOS ITENS NO CAMINHO PARA SEREM EQUIPADOS
-            // REGENERAR VIDA ANTES DE LUTAR NOVAMENTE 
             while(personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
-               System.out.println("Turno " + round + ". FIGHT!"); 
+               System.out.println("Round: " + round); 
 
                if(personagemComeca){
-                System.out.println(Text.ataquesDisponiveis());
-                int escolhaAtaque = scanner.nextInt();
+                int escolhaAtaque = escolherAtaque();
 
-                // Ataque do personagem
                 switch (escolhaAtaque) {
                     case 1:
-                        //aqui o personagem usa o seu ataque comum, vulgo 1 skill dele, no caso seria a skill de criação
-                        System.out.println("\n" + personagemEscolhido.getNome() + "atacou com sua arma.");
+                        System.out.println("Escolha o item para atacar o monstro:\n");
+                        System.out.println("\n" + personagemEscolhido.getNome() + "usou seu item.");
                         monstro.sofrerDano(personagemEscolhido.getAtaque());
                         break;
                     case 2:
@@ -120,7 +102,7 @@ public class Dungeon {
                         break;
                 }
 
-                if(monstroUltimate){
+                if(roundUltimateMonstro == round){
                     System.out.println("MONSTER ULTIMATE!" +
                      "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
                     personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
@@ -132,7 +114,49 @@ public class Dungeon {
                }else{
                 System.out.println("\nProgramar a lógica para o monstro começando.");
                }
+               round++;
             }
         } 
     }
+
+    private boolean caraCoroa(Personagens personagemEscolhido, Monstro monstro){
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        System.out.println("CARA ou COROA?\n1. Cara\n2. Coroa");
+        int caraCoroa = scanner.nextInt();
+        caraCoroa = caraCoroa - 1;
+        int escolhaCaraCoroa = random.nextInt(2);
+        boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
+
+        System.out.println(personagemEscolhido.getNome() + "VS" + monstro.getNome());
+        if(personagemComeca){
+            System.out.println(personagemEscolhido.getNome() + " começa!\n");
+        }else{
+            System.out.println("O monstro começa!");
+        }
+        return personagemComeca;
+    }
+
+    private int roundUltimateMonstro(int round){
+        Random random = new Random();
+        int roundUltimateMonstro = random.nextInt(10);
+        return roundUltimateMonstro;
+    }
+
+    private int escolherAtaque(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Escolha seu ataque:\n");
+        System.out.println(Text.ataquesDisponiveis());
+        int escolhaAtaque = scanner.nextInt();
+        return escolhaAtaque;
+    }
+
+    private void caso1UsarItem(){}
+
+    private void caso2UsarHabilidade(){}
+
+    private void caso3UsarAtaqueBásico(){}
+
+    private void caso4UsarFuga(){}
+
 }

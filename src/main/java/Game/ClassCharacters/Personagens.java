@@ -1,6 +1,7 @@
 package Game.ClassCharacters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Game.Items.Item;
 import Game.Skills.Habilidade;
@@ -182,6 +183,10 @@ public class Personagens extends Criatura{
     
     public int getPorcentagemXpGanho() {
         return porcentagemXpGanho;
+    }
+
+    public ArrayList<Item> getItensEquipados() {
+      return itensEquipados;
     }
 
      @Override
