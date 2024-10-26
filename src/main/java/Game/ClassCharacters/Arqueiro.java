@@ -7,15 +7,13 @@ import Game.Items.Flecha;
 
 public class Arqueiro extends Personagens {
     String Classe;
-    private int porcentagemXpGanho;
     private String[] habilidades;
     private BolsaDeFlechas bolsaDeFlechas;
 
     public Arqueiro(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
                 int ataqueHabilidadeEspecial, String[] habilidades) {
-        super(nome, vida, mana, ataque, defesa,regenVida,regenMana,velocidade, ataqueHabilidadeEspecial);
+        super(nome, vida, mana, ataque, defesa,regenVida,regenMana,velocidade, ataqueHabilidadeEspecial, porcentagemXpGanho);
         this.Classe = "Arqueiro";
-        this.porcentagemXpGanho = porcentagemXpGanho;
         this.habilidades = habilidades;
         this.bolsaDeFlechas = new BolsaDeFlechas();
     }
@@ -40,10 +38,6 @@ public class Arqueiro extends Personagens {
             flechasInfo.append(flecha.toString()).append("\n");
         }
         return flechasInfo.toString();
-    }
-
-    public int getPorcentagemXpGanho() {
-        return porcentagemXpGanho;
     }
 
     public String[] getHabilidades() {

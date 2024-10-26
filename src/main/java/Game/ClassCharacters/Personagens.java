@@ -15,11 +15,12 @@ public class Personagens extends Criatura{
     private int nivel;
     private int experiencia;  // XP atual
     private int experienciaProximoNivel;
+    protected int porcentagemXpGanho;
     private ArrayList<Habilidade> habilidades;  // Lista de habilidades desbloqueadas
     protected ArrayList<Item> itensEquipados;
 
     public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida,
-                       int regenMana, int velocidade, int ataqueHabilidadeEspecial) {
+                       int regenMana, int velocidade, int ataqueHabilidadeEspecial, int porcentagemXpGanho) {
         super(nome, regenVida, ataque, defesa, ataqueHabilidadeEspecial);
         this.mana = mana;
         this.regenVida = regenVida;
@@ -30,6 +31,7 @@ public class Personagens extends Criatura{
         this.experienciaProximoNivel = 100;  //100 XP para o próximo nível
         this.habilidades = new ArrayList<Habilidade>();
         this.itensEquipados = new ArrayList<Item>();
+        this.porcentagemXpGanho = porcentagemXpGanho;
     }
 
     public void ganharExperiencia(int xp) {
@@ -55,7 +57,6 @@ public class Personagens extends Criatura{
             System.out.println("\n" + getNome() + " desbloqueou a habilidade: " + novaHabilidadeUnica.getNome());
         }
     }
-
 
     public void usarHabilidade(int indiceHabilidade) {
         if (indiceHabilidade < habilidades.size()) {
@@ -150,6 +151,7 @@ public class Personagens extends Criatura{
     public int getDinheiro() {
         return dinheiro;
     }
+
     public void setDinheiro(int dinheiro){
         this.dinheiro = dinheiro;
     }
@@ -178,6 +180,10 @@ public class Personagens extends Criatura{
         this.velocidade = velocidade;
     }
     
+    public int getPorcentagemXpGanho() {
+        return porcentagemXpGanho;
+    }
+
      @Override
         public String toString() {
             return "Nome: " + getNome() + "\n" +

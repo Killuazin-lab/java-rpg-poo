@@ -7,7 +7,6 @@ import Game.Invocation.Planta;
 
 public class Druida extends Personagens {
     String Classe;
-    private int porcentagemXpGanho;
     private String[] poderes; // Poderes da natureza o
     private int sementes;
     private int contadorTurnos;
@@ -15,9 +14,8 @@ public class Druida extends Personagens {
 
     public Druida(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
                 int ataqueHabilidadeEspecial, String[] poderes) {
-        super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade, ataqueHabilidadeEspecial);
+        super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade, ataqueHabilidadeEspecial, porcentagemXpGanho);
         this.Classe = "Druida";
-        this.porcentagemXpGanho = porcentagemXpGanho;
         this.poderes = poderes;
         this.sementes = 1;  // O Druida começa com 1 semente
         this.contadorTurnos = 0;
@@ -67,11 +65,6 @@ public class Druida extends Personagens {
                     "Plantas Invocadas:\n" + plantasInfo.toString();
 
         }
-
-    // Getters e setters
-    public int getPorcentagemXpGanho() {
-        return porcentagemXpGanho;
-    }
 
     public String[] getPoderes() {
         return poderes;

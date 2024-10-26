@@ -68,11 +68,9 @@ public class Dungeon {
 
         ordenarMonstros();
 
-
-
         int round = 0;
         for(Monstro monstro: monstrosDungeon){
-            System.out.println("CARA ou COROA?\nEscolha:\n1. Cara\n2. Coroa");
+            System.out.println("CARA ou COROA?\n1. Cara\n2. Coroa");
             int caraCoroa = scanner.nextInt();
             caraCoroa = caraCoroa - 1;
             int escolhaCaraCoroa = random.nextInt(2);
