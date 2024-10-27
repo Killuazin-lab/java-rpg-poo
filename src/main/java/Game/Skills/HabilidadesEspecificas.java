@@ -3,13 +3,12 @@ package Game.Skills;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class HabilidadesEspecificas {
     private static Map<String, Map<Integer, Habilidade>> habilidadesPorClasse = new HashMap<>();
 
     static {
         // Habilidades do Mago
-        Map<Integer, Habilidade> habilidadesMago = new HashMap<>(); 
+        HashMap<Integer, Habilidade> habilidadesMago = new HashMap<>(); 
         habilidadesMago.put(5, new Habilidade("Bola de Fogo", "Lança uma bola de fogo que queima o inimigo.", 20, 15, 1, false));
         habilidadesMago.put(10, new Habilidade("Tiro de Gelo", "Dispara um projetil de gelo em direção ao inimigo." , 30, 35, 2, false));
         habilidadesMago.put(15, new Habilidade("Tiro de Pedra", "Dispara projeteis de pedra em direção ao inimigo.", 50, 35, 3, false));
@@ -123,9 +122,10 @@ public class HabilidadesEspecificas {
     }
 
     // Retorna a habilidade específica para a classe e nível
-    public static Habilidade getHabilidadePorClasseENivel(String classe, int nivel) {
-        if (habilidadesPorClasse.containsKey(classe)) {
-            return habilidadesPorClasse.get(classe).getOrDefault(nivel, null);
+    public static Map<Integer, Habilidade> getHabilidadePorClasseENivel(String classe) {
+        if(habilidadesPorClasse.containsKey(classe)){
+            Map<Integer, Habilidade> habilidadesClasseDesbloqueadas = habilidadesPorClasse.get(classe);
+            return habilidadesClasseDesbloqueadas;
         }
         return null;
     }

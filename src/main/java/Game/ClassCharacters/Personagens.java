@@ -2,6 +2,7 @@ package Game.ClassCharacters;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import Game.Items.Item;
 import Game.Skills.Habilidade;
@@ -49,7 +50,12 @@ public class Personagens extends Criatura{
     }
 
     public void desbloquearHabilidade(){
-       Habilidade habilidadesPorClasse = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.classe, this.nivel);
+        Map<Integer, Habilidade> habilidadesClasseDesbloqueadas = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.classe);
+        for(Integer nivelHabilidade : habilidadesClasseDesbloqueadas.keySet()){
+            if(this.nivel >= nivelHabilidade){
+                this.habilidades.add(habilidadesClasseDesbloqueadas.get(nivelHabilidade));
+            }
+        }
     }
 
     public void usarHabilidade(int indiceHabilidade) {
