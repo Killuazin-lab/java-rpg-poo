@@ -16,7 +16,7 @@ public class Criatura {
   }
 
   public void sofrerDano(int danoSofrido){
-    this.vida = this.vida - danoSofrido;
+    this.vida = this.vida - (danoSofrido - defesa);
   }
 
   public int getAtaque() {
