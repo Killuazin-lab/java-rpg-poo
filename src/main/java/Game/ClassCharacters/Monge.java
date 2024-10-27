@@ -3,12 +3,12 @@ package Game.ClassCharacters;
 import java.util.Arrays;
 
 public class Monge extends Personagens {
-    String Classe;
+    public String Classe;
     private String[] habilidades;
 
     public Monge(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
-            int ataqueHabilidadeEspecial, String[] habilidades) {
-        super(nome, vida, mana, ataque, defesa, regenVida,regenMana,velocidade,ataqueHabilidadeEspecial, porcentagemXpGanho);
+            int ataqueHabilidadeEspecial, String[] habilidades, String classe) {
+        super(nome, vida, mana, ataque, defesa, regenVida,regenMana,velocidade,ataqueHabilidadeEspecial, classe);
         this.Classe = "Monge";
         this.habilidades = habilidades;
     }
@@ -17,7 +17,6 @@ public class Monge extends Personagens {
         public String toString() {
             return super.toString() + "\n" +  // Chama o toString da classe mãe (Personagens)
                     "Classe: " + Classe + "\n" +
-                    "Porcentagem de XP ganho: " + porcentagemXpGanho + "\n" +
                     "Habilidades: " + Arrays.toString(habilidades) + "\n";
 
         }

@@ -11,8 +11,8 @@ public class Arqueiro extends Personagens {
     private BolsaDeFlechas bolsaDeFlechas;
 
     public Arqueiro(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
-                int ataqueHabilidadeEspecial, String[] habilidades) {
-        super(nome, vida, mana, ataque, defesa,regenVida,regenMana,velocidade, ataqueHabilidadeEspecial, porcentagemXpGanho);
+                int ataqueHabilidadeEspecial, String[] habilidades, String classe) {
+        super(nome, vida, mana, ataque, defesa,regenVida,regenMana,velocidade, ataqueHabilidadeEspecial, classe);
         this.Classe = "Arqueiro";
         this.habilidades = habilidades;
         this.bolsaDeFlechas = new BolsaDeFlechas();
@@ -26,7 +26,6 @@ public class Arqueiro extends Personagens {
         public String toString() {
             return super.toString() + "\n" +  // Chama o toString da classe mãe (Personagens)
                     "Classe: " + Classe + "\n" +
-                    "Porcentagem de XP ganho: " + porcentagemXpGanho + "\n" +
                     "Habilidades: " + Arrays.toString(habilidades) + "\n" +
                     "Bolsa de Flechas: \n" + listarFlechas();
 

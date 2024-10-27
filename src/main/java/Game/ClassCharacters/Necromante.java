@@ -6,14 +6,14 @@ import java.util.Arrays;
 import Game.Invocation.Invocacao;
 
 public class Necromante extends Personagens {
-    String Classe;
+    public String Classe;
     private String[] habilidades;
     private int energiaDasTrevas; // Energia das trevas do necromante
     private ArrayList<Invocacao> reservatorioDeMortos; // Armazena invocações
 
     public Necromante(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana, int velocidade, int porcentagemXpGanho,
-                    int energiaDasTrevas, int ataqueHabilidadeEspecial, String[] habilidades) {
-        super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade, ataqueHabilidadeEspecial, porcentagemXpGanho);
+                    int energiaDasTrevas, int ataqueHabilidadeEspecial, String[] habilidades, String classe) {
+        super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade, ataqueHabilidadeEspecial, classe);
         this.Classe = "Necromante";
         this.habilidades = habilidades;
         this.energiaDasTrevas = energiaDasTrevas;
@@ -28,7 +28,6 @@ public class Necromante extends Personagens {
             }
             return super.toString() + "\n" +  // Chama o toString da classe mãe (Personagens)
                     "Classe: " + Classe + "\n" +
-                    "Porcentagem de XP ganho: " + porcentagemXpGanho + "\n" +
                     "Habilidades: " + Arrays.toString(habilidades) + "\n" +
                     "Energia das Trevas: " + energiaDasTrevas + "\n" +
                     "Reservatório de Mortos: \n" + invocacoesInfo.toString();

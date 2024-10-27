@@ -15,14 +15,13 @@ public class Personagens extends Criatura{
     private int dinheiro;  // Atributo para o dinheiro do personagem
     private int nivel;
     private int experiencia;  // XP atual
-    private int experienciaProximoNivel;
-    protected int porcentagemXpGanho;
     private ArrayList<Habilidade> habilidades;  // Lista de habilidades desbloqueadas
     protected ArrayList<Item> itensColetados;
     private Item itemEquipado;
+    protected String classe;
 
     public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida,
-                       int regenMana, int velocidade, int ataqueHabilidadeEspecial, int porcentagemXpGanho) {
+                       int regenMana, int velocidade, int ataqueHabilidadeEspecial, String classe) {
         super(nome, regenVida, ataque, defesa, ataqueHabilidadeEspecial);
         this.mana = mana;
         this.regenVida = regenVida;
@@ -30,50 +29,41 @@ public class Personagens extends Criatura{
         this.velocidade = velocidade;
         this.nivel = 1;
         this.experiencia = 0;
-        this.experienciaProximoNivel = 100;  //100 XP para o próximo nível
         this.habilidades = new ArrayList<Habilidade>();
         this.itensColetados = new ArrayList<Item>();
-        this.porcentagemXpGanho = porcentagemXpGanho;
         this.itemEquipado = null;
+        this.classe = classe;
     }
 
-    public void ganharExperiencia(int xp) {
-        experiencia += xp;
-        while (experiencia >= experienciaProximoNivel) {
-            subirNivel();  // Sobe de nível enquanto tiver XP suficiente
-        }
+    public void ganharExperiencia(int experiencia){
+        this.experiencia =  this.experiencia + experiencia;
+        subirNivel();
     }
 
-    public void subirNivel() {
-        nivel++;
-        experiencia = experiencia - experienciaProximoNivel;
-        experienciaProximoNivel += 10;  // cada nível exige mais 50 XP
-        //aumentarAtributos();  // Aumenta os atributos do personagem  adicionar isso ainda
-        System.out.println(getNome() + " subiu para o nível " + nivel + "!\n");
-        System.out.println("Experiência atual: " + experiencia + "\n");
-        System.out.println("Experiência necessária para o próximo nível: " + experienciaProximoNivel + "\n");
+    public void subirNivel(){
+        this.nivel = this.experiencia/100;
+        if(this.nivel >= 50){
+            this.nivel = 50;
+        } 
+        System.out.println("Parabéns! Subiu para o nível " + this.nivel);
+    }
 
-// Verificar se há uma habilidade específica para desbloquear no nível atual
-    Habilidade novaHabilidadeUnica = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.getClass().getSimpleName(), nivel);
-        if (novaHabilidadeUnica != null) {
-            habilidades.add(novaHabilidadeUnica);
-            System.out.println("\n" + getNome() + " desbloqueou a habilidade: " + novaHabilidadeUnica.getNome());
-        }
+    public void desbloquearHabilidade(){
+       Habilidade habilidadesPorClasse = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.classe, this.nivel);
     }
 
     public void usarHabilidade(int indiceHabilidade) {
         if (indiceHabilidade < habilidades.size()) {
             Habilidade habilidade = habilidades.get(indiceHabilidade);
             if (mana >= habilidade.getCustoMana()) {
-            // Cálculo do dano total: dano da habilidade + ataque do personagem
-            int danoTotal = this.ataque + habilidade.getDano();
+                // Cálculo do dano total: dano da habilidade + ataque do personagem
+                int danoTotal = this.ataque + habilidade.getDano();
 
-            // Exibe a mensagem com o nome da habilidade e o dano total causado
-            System.out.println(this.nome + " usou " + habilidade.getNome() + " e causou " + danoTotal + " de dano!");
+                // Exibe a mensagem com o nome da habilidade e o dano total causado
+                System.out.println(this.nome + " usou " + habilidade.getNome() + " e causou " + danoTotal + " de dano!");
 
-            // Reduz o custo da mana do personagem
-            mana -= habilidade.getCustoMana();
-            
+                // Reduz o custo da mana do personagem
+                mana -= habilidade.getCustoMana();
             } else {
                 System.out.println("Mana insuficiente para usar " + habilidade.getNome() + "\n");
             }
@@ -119,7 +109,7 @@ public class Personagens extends Criatura{
         this.vida -= (item.getAumentoVida() + item.getDebuf());
         this.mana -= (item.getAumentoMana() + item.getDebuf());
         this.velocidade -= (item.getAumentoVelocidade() + item.getDebuf());
-        this.itensColetados.remove(item);
+        this.itemEquipado = null;
         System.out.println("\n" + item.getNome() + " desequipado!\n");
     }
 
@@ -171,10 +161,6 @@ public class Personagens extends Criatura{
     public void setVelocidade(int velocidade) {
         this.velocidade = velocidade;
     }
-    
-    public int getPorcentagemXpGanho() {
-        return porcentagemXpGanho;
-    }
 
     public ArrayList<Item> getItensColetados() {
       return itensColetados;
@@ -188,6 +174,10 @@ public class Personagens extends Criatura{
       this.itemEquipado = itemEquipado;
     }
 
+    public String getClasse(){
+        return this.classe;
+    }
+
      @Override
         public String toString() {
             return "Nome: " + getNome() + "\n" +
@@ -198,7 +188,6 @@ public class Personagens extends Criatura{
                     "Regeneração de Vida: " + regenVida + "\n" +
                     "Regeneração de Mana: " + regenMana + "\n" +
                     "Velocidade: " + velocidade +
-                    "Nível: " + nivel + "\n" +
-                    "Experiência: " + experiencia + "/" + experienciaProximoNivel + "\n";          
+                    "Nível: " + nivel + "\n";          
         }
 }

@@ -72,19 +72,21 @@ public class Dungeon {
 
             while(this.personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
                System.out.println("Round: " + round); 
+               System.out.println("Vida do personagem: " + this.personagemEscolhido.getVida() + "\n");
+               System.out.println("Vida do monstro: " + monstro.getVida());
 
                if(personagemComeca){
                 int escolhaAtaque = escolherAtaque();
 
                 switch (escolhaAtaque) {
                     case 1:
-                        caso1UsarItem(monstro);
+                        caso1UsarAtaqueBásico(monstro); // FEITO
                         break;
                     case 2:
                         caso2UsarHabilidade(monstro);
                         break;
                     case 3:
-                        caso3UsarAtaqueBásico(monstro);
+                        caso3UsarItem(monstro); // FEITO
                         break;
                     case 4:
                         caso4UsarFuga();
@@ -144,12 +146,26 @@ public class Dungeon {
         return escolhaAtaque;
     }
 
-    private void caso1UsarItem(Monstro monstro){
+    
+    private void caso1UsarAtaqueBásico(Monstro monstro){
+        System.out.println("\n" + this.personagemEscolhido.getNome() + "deu um socão!");
+        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+        System.out.println(monstro + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
+        System.out.println(monstro + " ficou com " + monstro.getVida() + " de vida.\n");
+    }
+
+    private void caso2UsarHabilidade(Monstro monstro){
+        System.out.println("\n" + this.personagemEscolhido.getNome() + "usou sua habilidade.");
+        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+    }
+
+    private void caso3UsarItem(Monstro monstro){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Escolha o item para atacar o monstro:\n");
         int indexItem = 1;
         for(Item item : this.personagemEscolhido.getItensColetados()){
             System.out.println(indexItem + ". " + item.getNome());
+            indexItem = indexItem + 1;
         }
         int indexEscolhaIem = scanner.nextInt();
         Item itemEquipado = this.personagemEscolhido
@@ -161,16 +177,9 @@ public class Dungeon {
         this.personagemEscolhido.equiparItem(itemEquipado);
         System.out.println("\n" + this.personagemEscolhido.getNome() + " usou seu item.");
         monstro.sofrerDano(this.personagemEscolhido.getAtaque());
-    }
-
-    private void caso2UsarHabilidade(Monstro monstro){
-        System.out.println("\n" + this.personagemEscolhido.getNome() + "usou sua habilidade.");
-        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
-    }
-
-    private void caso3UsarAtaqueBásico(Monstro monstro){
-        System.out.println("\n" + this.personagemEscolhido.getNome() + "deu um socão!");
-        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+        System.out.println(monstro + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
+        System.out.println(monstro + " ficou com " + monstro.getVida() + " de vida.\n");
+        this.personagemEscolhido.desequiparItem(itemEquipado);
     }
 
     private void caso4UsarFuga(){

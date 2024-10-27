@@ -23,19 +23,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        /*
-        ArrayList<Monstro> monstros = new ArrayList<Monstro>();
-        
-        
-        monstros.add(new Monstro("Goblin", 50, 20, 10, "Ataque Rápido"));
-        monstros.add(new Monstro("Troll", 120, 40, 30, "Regeneração"));
-        monstros.add(new Monstro("Dragão", 200, 60, 50, "Sopro de Fogo"));
-        monstros.add(new Monstro("Esqueleto", 70, 25, 15, "Ataque Sombrio")); 
-        
-        Random random = new Random();
-        int indexAleatorio = random.nextInt(monstros.size());
-        Monstro monstroEscolhido = monstros.get(indexAleatorio);
-        */
+
         // Introdução
         System.out.println("************************************");
         System.out.println("Bem vindo ao RPG de texto em Java!");
@@ -163,12 +151,15 @@ public class Main {
         System.out.println("\n'Tudo certo, acho que ja é hora de desafiar a primeira dungeon!\n");
         System.out.println(Text.entrarDungeon());
 
+        System.out.println("-Ei herói... Quase me esqueci... Tome este punhado de experiência!");
+        personagemEscolhido.ganharExperiencia(500);
+        System.out.println(personagemEscolhido.getClass());
+
+        System.out.println("tESTE");
         Dungeon dungeon = new Dungeon(personagemEscolhido);
         dungeon.combate();
     }
 }
-
-        // so pra eu n esquecer (Breno)
         // personagemEscolhido.mostrarHabilidades();
         // System.out.println("");
         // personagemEscolhido.ganharExperiencia(5000);
