@@ -22,145 +22,158 @@ import Game.Texts.Text;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        for(int tentativa = 0; tentativa <= 5; tentativa++){
+            Scanner scanner = new Scanner(System.in);
 
-        // Introdução
-        System.out.println("************************************");
-        System.out.println("Bem vindo ao RPG de texto em Java!");
-        System.out.println("Prepare-se para uma aventura épica!");
-        System.out.println("************************************\n\n");
-        System.out.println(Text.boasVindas());
-        System.out.println(Text.cidadeInicial());
-        System.out.println("Qual o seu nome ?\n");
-        String nomePersonagem = scanner.next();
-        Personagens personagemEscolhido = null;
+            // Introdução
+            System.out.println("************************************");
+            System.out.println("Bem vindo ao RPG de texto em Java!");
+            System.out.println("Prepare-se para uma aventura épica!");
+            System.out.println("************************************\n\n");
+            System.out.println(Text.boasVindas());
+            System.out.println(Text.cidadeInicial());
+            System.out.println("Qual o seu nome ?\n");
+            String nomePersonagem = scanner.next();
+            Personagens personagemEscolhido = null;
 
-        int error = 1;
-        do{
-            System.out.println(Text.escolhaPersonagem());
-            int escolha = scanner.nextInt();
-            switch (escolha) {
-                case 1:         // NOME, HP, MP, ATK, DEF, HPR,MPR, V, XP, VATK, cast,range,CDR, nomeSkill                                
-                    Samurai samurai = CreateCharacter.createSamurai();
-                    personagemEscolhido = samurai;
-                    error = 0;
-                    break;
-                case 2:         // NOME, HP, MP, ATK, DEF, HPR, MPR, V, XP, VATK, castM, rangeM, CDR, nomeMagia (ADICIONAR )
-                    Mago mago = CreateCharacter.createMago();
-                    personagemEscolhido = mago;
-                    error = 0;
-                    break;
-                case 3: // NOME, HP, MP, ATK, DEF, HPR,MPR, V, XP, VATK, cast,range,CDR, nomeSkill // (PASSIVA: QUANTO MENOS VIDA TIVER, MAIS REGEN DE VIDA)
-                    Guerreiro guerreiro = CreateCharacter.createGuerreiro();
-                    personagemEscolhido = guerreiro;
-                    error = 0;
-                    break;
-                case 4: // NOME, HP, MP, ATK, DEF, HPR, MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill // (ALTERAR MECANICA, SÓ PODE BATER COM FELHA)
-                    Arqueiro arqueiro = CreateCharacter.createArqueiro();
-                    personagemEscolhido = arqueiro;
-                    error = 0;
-                    break;
-                case 5: // NOME, HP, MP, ATK, DEF, HPR, MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill// (PASSIVA: CAUSA CRITCO NO PRIMEIRO HIT)
-                    Ladino ladino = CreateCharacter.createLadino();
-                    personagemEscolhido = ladino;
-                    error = 0;
-                    break;
-                case 6: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill// (PASSIVA: (VAI POSSUIR UM ARSENAL DE "PLANTAS COM BASE NOS BROTOS (ZYRA)"))
-                    Druida druida = CreateCharacter.createDruida();
-                    personagemEscolhido = druida;
-                    error = 0;
-                    break;
-                case 7: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill, FÉ // (PASSIVA: A CADA MEDITAÇÃO, AUMENTA UMA QUANTIDADE DE FÉ,O DANO É BASEADO NA// FÉ)
-                    Monge monge = CreateCharacter.createMonge();
-                    personagemEscolhido = monge;
-                    error = 0;
-                    break;
-                case 8: // NOME, HP, MP, ATK, DEF, HPR,MPR, XP, ATKS, MVS,cast,range,CDR, nomeSkill, // trevas (DANO DAS INVOCAÇÕES AUMENTA COM BASE EM "TREVAS")
-                    Necromante necromante = CreateCharacter.createNecromante();
-                    personagemEscolhido = necromante;
-                    error = 0;
-                    break;
-                default:
-                    System.out.println("\nOpção inválida. Escolha uma classe válida.");
-                    break;
-            }
-        }while(error != 0);
-
-        personagemEscolhido.setDinheiro(100);
-        personagemEscolhido.setNome(nomePersonagem);
-
-        System.out.println("\nDeseja ver os atributos do seu personagem ?\n1. Sim\n2. Não\n");
-        int escolhaPrincipal = scanner.nextInt();
-        if (escolhaPrincipal == 1) {
-            System.out.println("\nAtributos iniciais da classe escolhida: \n");
-            System.out.println("\n" + personagemEscolhido);
-            System.out.println("\n************************************");
-        }
-
-        System.out.println(Text.posRegistro());
-
-        // Dúvidas do jogador
-        System.out.println("\nDeseja uma explicação de como funciona as dungeons ?\n1. Sim\n2. Não\n");
-        escolhaPrincipal = scanner.nextInt();
-        if (escolhaPrincipal == 1){
-            System.out.println(Text.explicarDungeons());
-        }
-        System.out.println("Antes de desbravar as dungeons, tem mais alguma dúvida?\n1. Sim\n2. Não\n");
-        escolhaPrincipal = scanner.nextInt();
-        if (escolhaPrincipal == 1){
-            while (escolhaPrincipal != 0){
-                System.out.println(Text.duvidas());
-                escolhaPrincipal = scanner.nextInt();
-                switch (escolhaPrincipal) {
-                    case 0:
-                        System.out.println("\nPerfeito!");
+            int error = 1;
+            do{
+                System.out.println(Text.escolhaPersonagem());
+                int escolha = scanner.nextInt();
+                switch (escolha) {
+                    case 1:                        
+                        Samurai samurai = CreateCharacter.createSamurai();
+                        personagemEscolhido = samurai;
+                        error = 0;
                         break;
-                    case 1:
-                        System.out.println(Text.xpMonstro());
-                        break;
-                    case 2:
-                        System.out.println(Text.dungeonNomes());
+                    case 2:        
+                        Mago mago = CreateCharacter.createMago();
+                        personagemEscolhido = mago;
+                        error = 0;
                         break;
                     case 3:
-                        System.out.println(Text.cidadesSobreviventes());
+                        Guerreiro guerreiro = CreateCharacter.createGuerreiro();
+                        personagemEscolhido = guerreiro;
+                        error = 0;
                         break;
                     case 4:
-                        System.out.println(Text.monstrosDescobertos());
+                        Arqueiro arqueiro = CreateCharacter.createArqueiro();
+                        personagemEscolhido = arqueiro;
+                        error = 0;
                         break;
-                    case 5:
-                        System.out.println(Text.explicarDinheiro());
+                    case 5: 
+                        Ladino ladino = CreateCharacter.createLadino();
+                        personagemEscolhido = ladino;
+                        error = 0;
                         break;
-                    case 6:
-                        System.out.println(Text.explicarItens());
+                    case 6: 
+                        Druida druida = CreateCharacter.createDruida();
+                        personagemEscolhido = druida;
+                        error = 0;
                         break;
-                    case 7:
-                        System.out.println(Text.explicarPocoes());
+                    case 7: 
+                        Monge monge = CreateCharacter.createMonge();
+                        personagemEscolhido = monge;
+                        error = 0;
+                        break;
+                    case 8: 
+                        Necromante necromante = CreateCharacter.createNecromante();
+                        personagemEscolhido = necromante;
+                        error = 0;
                         break;
                     default:
-                        System.out.println("Informe uma opção válida");
+                        System.out.println("\nOpção inválida. Escolha uma classe válida.");
                         break;
                 }
+            }while(error != 0);
+
+            personagemEscolhido.setDinheiro(100);
+            personagemEscolhido.setNome(nomePersonagem);
+
+            System.out.println("\nDeseja ver os atributos do seu personagem ?\n1. Sim\n2. Não\n");
+            int escolhaPrincipal = scanner.nextInt();
+            if (escolhaPrincipal == 1) {
+                System.out.println("\nAtributos iniciais da classe escolhida: \n");
+                System.out.println("\n" + personagemEscolhido);
+                System.out.println("\n************************************");
             }
+
+            System.out.println(Text.posRegistro());
+
+            // Dúvidas do jogador
+            System.out.println("\nDeseja uma explicação de como funciona as dungeons ?\n1. Sim\n2. Não\n");
+            escolhaPrincipal = scanner.nextInt();
+            if (escolhaPrincipal == 1){
+                System.out.println(Text.explicarDungeons());
+            }
+            System.out.println("Antes de desbravar as dungeons, tem mais alguma dúvida?\n1. Sim\n2. Não\n");
+            escolhaPrincipal = scanner.nextInt();
+            if (escolhaPrincipal == 1){
+                while (escolhaPrincipal != 0){
+                    System.out.println(Text.duvidas());
+                    escolhaPrincipal = scanner.nextInt();
+                    switch (escolhaPrincipal) {
+                        case 0:
+                            System.out.println("\nPerfeito!");
+                            break;
+                        case 1:
+                            System.out.println(Text.xpMonstro());
+                            break;
+                        case 2:
+                            System.out.println(Text.dungeonNomes());
+                            break;
+                        case 3:
+                            System.out.println(Text.cidadesSobreviventes());
+                            break;
+                        case 4:
+                            System.out.println(Text.monstrosDescobertos());
+                            break;
+                        case 5:
+                            System.out.println(Text.explicarDinheiro());
+                            break;
+                        case 6:
+                            System.out.println(Text.explicarItens());
+                            break;
+                        case 7:
+                            System.out.println(Text.explicarPocoes());
+                            break;
+                        default:
+                            System.out.println("Informe uma opção válida");
+                            break;
+                    }
+                }
+            }
+
+            System.out.println(Text.fimApresentacaoBalconista());
+            System.out.println("\n****************************************");
+            System.out.println(Text.visitaLoja());
+            GunShop.exibirItens(personagemEscolhido);
+            System.out.println("Dinheiro restante: " + personagemEscolhido.getDinheiro() + " moedas.");
+            System.out.println("\n'Tudo certo, acho que ja é hora de desafiar a primeira dungeon!\n");
+            System.out.println(Text.entrarDungeon());
+
+            System.out.println("-Ei herói... Quase me esqueci... Tome este punhado de experiência!");
+        
+            for(int totalRodadasDungeon = 0; totalRodadasDungeon <= 5; totalRodadasDungeon++){
+                personagemEscolhido.ganharExperiencia(1000); // Começar no nível 10 == 2 habilidades
+                Dungeon dungeon = new Dungeon(personagemEscolhido);
+                dungeon.combate();
+                if(personagemEscolhido.morreu){
+                    break;
+                }
+                // Volte para a cidade
+                // Compre mais itens
+            }
+            if(personagemEscolhido.morreu){
+                System.out.println("Seu personagem morreu. Jogar novamente?\n1. Sim\n2. Não");
+                int escolhaJogarNovamente = scanner.nextInt();
+                if(escolhaJogarNovamente == 1){
+                    continue;
+                }else{
+                    break;
+                }
+            }
+            // Continuação da história.
         }
-
-        System.out.println(Text.fimApresentacaoBalconista());
-        System.out.println("\n****************************************");
-        System.out.println(Text.visitaLoja());
-        GunShop.exibirItens(personagemEscolhido);
-        System.out.println("Dinheiro restante: " + personagemEscolhido.getDinheiro() + " moedas.");
-        System.out.println("\n'Tudo certo, acho que ja é hora de desafiar a primeira dungeon!\n");
-        System.out.println(Text.entrarDungeon());
-
-        System.out.println("-Ei herói... Quase me esqueci... Tome este punhado de experiência!");
-        personagemEscolhido.ganharExperiencia(500); // Começar no nível 5
-        System.out.println(personagemEscolhido.getClass());
-
-        System.out.println("tESTE");
-        Dungeon dungeon = new Dungeon(personagemEscolhido);
-        dungeon.combate();
     }
 }
-        // personagemEscolhido.mostrarHabilidades();
-        // System.out.println("");
-        // personagemEscolhido.ganharExperiencia(5000);
-        // personagemEscolhido.desbloquearNovaHabilidade();

@@ -129,10 +129,9 @@ public class Text {
 
   public static String ataquesDisponiveis(){
     return "Tipos de ataque:\n" +
-        "1. Usar item\n" +
+        "1. Socão" +
         "2. Usar Habilidade\n" + 
-        "3. Socar\n" +
-        "4. Fugir";
+        "3. Usar item\n";
   }
 }
 

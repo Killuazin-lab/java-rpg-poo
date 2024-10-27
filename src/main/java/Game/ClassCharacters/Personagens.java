@@ -20,6 +20,7 @@ public class Personagens extends Criatura{
     protected ArrayList<Item> itensColetados;
     private Item itemEquipado;
     protected String classe;
+    public boolean morreu;
 
     public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida,
                        int regenMana, int velocidade, int ataqueHabilidadeEspecial, String classe) {
@@ -34,6 +35,7 @@ public class Personagens extends Criatura{
         this.itensColetados = new ArrayList<Item>();
         this.itemEquipado = null;
         this.classe = classe;
+        this.morreu = false;
     }
 
     public void ganharExperiencia(int experiencia){
@@ -47,6 +49,7 @@ public class Personagens extends Criatura{
             this.nivel = 50;
         } 
         System.out.println("Parabéns! Subiu para o nível " + this.nivel);
+        desbloquearHabilidade();
     }
 
     public void desbloquearHabilidade(){

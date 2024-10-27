@@ -77,39 +77,22 @@ public class Dungeon {
                System.out.println("Vida do monstro: " + monstro.getVida());
 
                if(personagemComeca){
-                int escolhaAtaque = escolherAtaque();
-
-                switch (escolhaAtaque) {
-                    case 1:
-                        caso1UsarAtaqueBásico(monstro); // FEITO
-                        break;
-                    case 2:
-                        caso2UsarHabilidade(monstro);
-                        break;
-                    case 3:
-                        caso3UsarItem(monstro); // FEITO
-                        break;
-                    case 4:
-                        caso4UsarFuga();
-                        break;
-                    default:
-                        System.out.println("\nEscolha uma opção válida!");
-                        break;
-                }
-
-                if(roundUltimateMonstro == round){
-                    System.out.println("MONSTER ULTIMATE!" +
-                     "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
-                    this.personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
-                }else{
-                    System.out.println("\nPrepare-se! O monstro irá atacar!");
-                    this.personagemEscolhido.sofrerDano(monstro.getAtaque());
-                }
-                round = round + 1;
+                personagemAtacar(monstro);
+                monstroAtacar(monstro, round, roundUltimateMonstro);
+                personagemComeca = false;
                }else{
-                System.out.println("\nProgramar a lógica para o monstro começando.");
+                monstroAtacar(monstro, round, roundUltimateMonstro);
+                personagemAtacar(monstro);
+                personagemComeca = true;
                }
-               round++;
+               round = round + 1;
+            }
+            if(personagemEscolhido.morreu){
+                break;
+            }
+            if(monstro.getVida() <= 0){
+                System.out.println("Parabéns você matou o monstro!\n Vamos para o próximo...");
+                continue;
             }
         } 
     }
@@ -121,8 +104,7 @@ public class Dungeon {
         int caraCoroa = scanner.nextInt();
         caraCoroa = caraCoroa - 1;
         int escolhaCaraCoroa = random.nextInt(2);
-        //boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
-        boolean personagemComeca = true;
+        boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
 
         System.out.println("\n" + this.personagemEscolhido.getNome() + " VS " + monstro.getNome() + "\n");
         if(personagemComeca){
@@ -148,7 +130,7 @@ public class Dungeon {
     }
 
     
-    private void caso1UsarAtaqueBásico(Monstro monstro){
+    private void caso1UsarAtaqueBasico(Monstro monstro){
         System.out.println("\n" + this.personagemEscolhido.getNome() + "deu um socão!");
         monstro.sofrerDano(this.personagemEscolhido.getAtaque());
         System.out.println(monstro + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
@@ -166,6 +148,8 @@ public class Dungeon {
         int danoTotal = personagemEscolhido.usarHabilidade(escolhaHabilidade - 1);
         System.out.println("\n" + this.personagemEscolhido.getNome() + "usou sua habilidade.");
         monstro.sofrerDano(danoTotal);
+        System.out.println(monstro + " sofreu " + danoTotal + " de dano.");
+        System.out.println(monstro + " ficou com " + monstro.getVida() + " de vida.\n");
     }
 
     private void caso3UsarItem(Monstro monstro){
@@ -191,8 +175,33 @@ public class Dungeon {
         this.personagemEscolhido.desequiparItem(itemEquipado);
     }
 
-    private void caso4UsarFuga(){
-        System.out.println("\nVocê escolheu fugir da luta, e consequentemente, sair da Dungeon");
+    public void personagemAtacar(Monstro monstro){
+        int escolhaAtaque = escolherAtaque();
+        switch (escolhaAtaque) {
+            case 1:
+                caso1UsarAtaqueBasico(monstro); // FEITO
+                break;
+            case 2:
+                caso2UsarHabilidade(monstro); // FEITO
+                break;
+            case 3:
+                caso3UsarItem(monstro); // FEITO
+                break;
+            default:
+                System.out.println("\nEscolha uma opção válida!");
+                break;
+        }
+    }
+
+    public void monstroAtacar(Monstro monstro, int round, int roundUltimateMonstro){
+        if(roundUltimateMonstro == round){
+            System.out.println("MONSTER ULTIMATE!" +
+             "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
+            this.personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
+        }else{
+            System.out.println("\nPrepare-se! O monstro irá atacar!");
+            this.personagemEscolhido.sofrerDano(monstro.getAtaque());
+        }
     }
 
 }
