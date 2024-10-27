@@ -26,44 +26,44 @@ public class GunShop {
         switch (escolha) {
             case 1:
                 if (personagem.gastarDinheiro(100)) {
-                    personagem.equiparItem(ReadyItems.espadaDeAco());
+                    personagem.coletarItens(ReadyItems.espadaDeAco());
                 }
                 break;
                 
             case 2:
                 if (personagem.gastarDinheiro(80)) {
-                    personagem.equiparItem(ReadyItems.escudoDeMadeira());
+                    personagem.coletarItens(ReadyItems.escudoDeMadeira());
                 }
                 break;
                 
             case 4:
                 if (personagem.gastarDinheiro(70)) {
-                    personagem.equiparItem(ReadyItems.botasDeVelocidade());
+                    personagem.coletarItens(ReadyItems.botasDeVelocidade());
                 }
                 break;
             case 5:
                 if (personagem.gastarDinheiro(150)) {
-                    personagem.equiparItem(ReadyItems.espadaGrande());
+                    personagem.coletarItens(ReadyItems.espadaGrande());
                 }
                 break; 
             case 6:
                 if (personagem.gastarDinheiro(130)) {
-                    personagem.equiparItem(ReadyItems.marteloDaForja());
+                    personagem.coletarItens(ReadyItems.marteloDaForja());
                 }
                 break;
             case 7:
                 if (personagem.gastarDinheiro(125)) {
-                    personagem.equiparItem(ReadyItems.cetroDeMagias());
+                    personagem.coletarItens(ReadyItems.cetroDeMagias());
                 }
                 break;
             case 8:
                 if (personagem.gastarDinheiro(140)) {
-                    personagem.equiparItem(ReadyItems.escudoDeDiamante());
+                    personagem.coletarItens(ReadyItems.escudoDeDiamante());
                 }
                 break;
             case 9:
                 if (personagem.gastarDinheiro(135)) {
-                    personagem.equiparItem(ReadyItems.botasDeVento());
+                    personagem.coletarItens(ReadyItems.botasDeVento());
                 }
                 break;
             default:

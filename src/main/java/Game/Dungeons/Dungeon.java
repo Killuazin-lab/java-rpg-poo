@@ -63,17 +63,14 @@ public class Dungeon {
 
     // Sistema de combate por turnos
     public void combate() {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
         ordenarMonstros();
 
         int round = 0;
         for(Monstro monstro: monstrosDungeon){
-            boolean personagemComeca = caraCoroa(personagemEscolhido, monstro);
+            boolean personagemComeca = caraCoroa(monstro);
             int roundUltimateMonstro = roundUltimateMonstro(round);
 
-            while(personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
+            while(this.personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
                System.out.println("Round: " + round); 
 
                if(personagemComeca){
@@ -81,22 +78,17 @@ public class Dungeon {
 
                 switch (escolhaAtaque) {
                     case 1:
-                        System.out.println("Escolha o item para atacar o monstro:\n");
-                        System.out.println("\n" + personagemEscolhido.getNome() + "usou seu item.");
-                        monstro.sofrerDano(personagemEscolhido.getAtaque());
+                        caso1UsarItem(monstro);
                         break;
                     case 2:
-                        System.out.println("\n" + personagemEscolhido.getNome() + "usou sua habilidade.");
-                        monstro.sofrerDano(personagemEscolhido.getAtaque());
+                        caso2UsarHabilidade(monstro);
                         break;
                     case 3:
-                        System.out.println("\n" + personagemEscolhido.getNome() + "deu um socão!");
-                        monstro.sofrerDano(personagemEscolhido.getAtaque());
+                        caso3UsarAtaqueBásico(monstro);
                         break;
-                    
                     case 4:
-                        System.out.println("\nVocê escolheu fugir da luta, e consequentemente, sair da Dungeon");
-
+                        caso4UsarFuga();
+                        break;
                     default:
                         System.out.println("\nEscolha uma opção válida!");
                         break;
@@ -105,10 +97,10 @@ public class Dungeon {
                 if(roundUltimateMonstro == round){
                     System.out.println("MONSTER ULTIMATE!" +
                      "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
-                    personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
+                    this.personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
                 }else{
                     System.out.println("\nPrepare-se! O monstro irá atacar!");
-                    personagemEscolhido.sofrerDano(monstro.getAtaque());
+                    this.personagemEscolhido.sofrerDano(monstro.getAtaque());
                 }
                 round = round + 1;
                }else{
@@ -119,18 +111,19 @@ public class Dungeon {
         } 
     }
 
-    private boolean caraCoroa(Personagens personagemEscolhido, Monstro monstro){
+    private boolean caraCoroa(Monstro monstro){
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("CARA ou COROA?\n1. Cara\n2. Coroa");
         int caraCoroa = scanner.nextInt();
         caraCoroa = caraCoroa - 1;
         int escolhaCaraCoroa = random.nextInt(2);
-        boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
+        //boolean personagemComeca = caraCoroa == escolhaCaraCoroa;
+        boolean personagemComeca = true;
 
-        System.out.println(personagemEscolhido.getNome() + "VS" + monstro.getNome());
+        System.out.println("\n" + this.personagemEscolhido.getNome() + " VS " + monstro.getNome() + "\n");
         if(personagemComeca){
-            System.out.println(personagemEscolhido.getNome() + " começa!\n");
+            System.out.println(this.personagemEscolhido.getNome() + " começa!\n");
         }else{
             System.out.println("O monstro começa!");
         }
@@ -145,18 +138,43 @@ public class Dungeon {
 
     private int escolherAtaque(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Escolha seu ataque:\n");
+        System.out.println("Escolha seu ataque:");
         System.out.println(Text.ataquesDisponiveis());
         int escolhaAtaque = scanner.nextInt();
         return escolhaAtaque;
     }
 
-    private void caso1UsarItem(){}
+    private void caso1UsarItem(Monstro monstro){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Escolha o item para atacar o monstro:\n");
+        int indexItem = 1;
+        for(Item item : this.personagemEscolhido.getItensColetados()){
+            System.out.println(indexItem + ". " + item.getNome());
+        }
+        int indexEscolhaIem = scanner.nextInt();
+        Item itemEquipado = this.personagemEscolhido
+                            .getItensColetados()
+                            .get(indexEscolhaIem - 1);
+        if(this.personagemEscolhido.getItemEquipado() != null){
+            this.personagemEscolhido.desequiparItem(this.personagemEscolhido.getItemEquipado());
+        }
+        this.personagemEscolhido.equiparItem(itemEquipado);
+        System.out.println("\n" + this.personagemEscolhido.getNome() + " usou seu item.");
+        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+    }
 
-    private void caso2UsarHabilidade(){}
+    private void caso2UsarHabilidade(Monstro monstro){
+        System.out.println("\n" + this.personagemEscolhido.getNome() + "usou sua habilidade.");
+        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+    }
 
-    private void caso3UsarAtaqueBásico(){}
+    private void caso3UsarAtaqueBásico(Monstro monstro){
+        System.out.println("\n" + this.personagemEscolhido.getNome() + "deu um socão!");
+        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+    }
 
-    private void caso4UsarFuga(){}
+    private void caso4UsarFuga(){
+        System.out.println("\nVocê escolheu fugir da luta, e consequentemente, sair da Dungeon");
+    }
 
 }

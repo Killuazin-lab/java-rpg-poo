@@ -18,7 +18,8 @@ public class Personagens extends Criatura{
     private int experienciaProximoNivel;
     protected int porcentagemXpGanho;
     private ArrayList<Habilidade> habilidades;  // Lista de habilidades desbloqueadas
-    protected ArrayList<Item> itensEquipados;
+    protected ArrayList<Item> itensColetados;
+    private Item itemEquipado;
 
     public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida,
                        int regenMana, int velocidade, int ataqueHabilidadeEspecial, int porcentagemXpGanho) {
@@ -31,8 +32,9 @@ public class Personagens extends Criatura{
         this.experiencia = 0;
         this.experienciaProximoNivel = 100;  //100 XP para o próximo nível
         this.habilidades = new ArrayList<Habilidade>();
-        this.itensEquipados = new ArrayList<Item>();
+        this.itensColetados = new ArrayList<Item>();
         this.porcentagemXpGanho = porcentagemXpGanho;
+        this.itemEquipado = null;
     }
 
     public void ganharExperiencia(int xp) {
@@ -97,8 +99,12 @@ public class Personagens extends Criatura{
         }
     }
 
+    public void coletarItens(Item item){
+        this.itensColetados.add(item);
+        System.out.println("\n" + item.getNome() + " coletado!\n");
+    }
+
     public void equiparItem(Item item) {
-        itensEquipados.add(item);
         super.ataque += item.getAumentoAtaque() + item.getDebuf();
         super.defesa += item.getAumentoDefesa() + item.getDebuf();
         super.vida += item.getAumentoVida() + item.getDebuf();
@@ -108,28 +114,13 @@ public class Personagens extends Criatura{
     }
 
     public void desequiparItem(Item item) {
-        if (itensEquipados.contains(item)) {
-            super.ataque -= (item.getAumentoAtaque() + item.getDebuf());
-            this.defesa -= (item.getAumentoDefesa() + item.getDebuf());
-            this.vida -= (item.getAumentoVida() + item.getDebuf());
-            this.mana -= (item.getAumentoMana() + item.getDebuf());
-            this.velocidade -= (item.getAumentoVelocidade() + item.getDebuf());
-            itensEquipados.remove(item);
-            System.out.println("\n" + item.getNome() + " desequipado!\n");
-        } else {
-            System.out.println("\nO item " + item.getNome() + " não está equipado.\n");
-        }
-    }
-
-    public void mostrarItensEquipados() {
-        if (itensEquipados.isEmpty()) {
-            System.out.println("\n" + getNome() + " não tem itens equipados.\n");
-        } else {
-            System.out.println("\n" + getNome() + " possui os seguintes itens equipados:\n");
-            for (Item item : itensEquipados) {
-                System.out.println(item.toString());
-            }
-        }
+        super.ataque -= (item.getAumentoAtaque() + item.getDebuf());
+        this.defesa -= (item.getAumentoDefesa() + item.getDebuf());
+        this.vida -= (item.getAumentoVida() + item.getDebuf());
+        this.mana -= (item.getAumentoMana() + item.getDebuf());
+        this.velocidade -= (item.getAumentoVelocidade() + item.getDebuf());
+        this.itensColetados.remove(item);
+        System.out.println("\n" + item.getNome() + " desequipado!\n");
     }
 
     // Métodos de manipulação de dinheiro
@@ -185,8 +176,16 @@ public class Personagens extends Criatura{
         return porcentagemXpGanho;
     }
 
-    public ArrayList<Item> getItensEquipados() {
-      return itensEquipados;
+    public ArrayList<Item> getItensColetados() {
+      return itensColetados;
+    }
+
+    public Item getItemEquipado() {
+      return itemEquipado;
+    }
+
+    public void setItemEquipado(Item itemEquipado) {
+      this.itemEquipado = itemEquipado;
     }
 
      @Override

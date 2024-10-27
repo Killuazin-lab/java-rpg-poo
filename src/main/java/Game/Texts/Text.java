@@ -128,7 +128,7 @@ public class Text {
   }
 
   public static String ataquesDisponiveis(){
-    return "\nTipos de ataque:\n" +
+    return "Tipos de ataque:\n" +
         "1. Usar item\n" +
         "2. Usar Habilidade\n" + 
         "3. Socar\n" +
