@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class Mago extends Personagens {
     private String[] magias; // Lista de magias do mago
 
-    public Mago(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana , int velocidade, int porcentagemXpGanho,
+    public Mago(String nome, int vida, int mana, int ataque, int defesa, int porcentagemXpGanho,
                int ataqueHabilidadeEspecial, String[] magias, String classe) {
-        super(nome, vida, mana, ataque, defesa, regenVida,regenMana, velocidade, ataqueHabilidadeEspecial, classe); // Chama o construtor da classe mãe
+        super(nome, vida, mana, ataque, defesa, ataqueHabilidadeEspecial, classe); // Chama o construtor da classe mãe
         this.magias = magias;
     }
 

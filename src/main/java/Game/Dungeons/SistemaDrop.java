@@ -11,7 +11,7 @@ public class SistemaDrop {
   // Método para verificar drop após matar um monstro
     public static Item verificarDrop(Personagens personagemEscolhido) {
         Random random = new Random();
-        int chance = random.nextInt(100)+1;  // Gera um número de 1 a 100
+        int chance = random.nextInt(100);  // Gera um número de 1 a 100
 
         if (chance < 60) {  // 60% de chance para item comum
             return droparItemComum();

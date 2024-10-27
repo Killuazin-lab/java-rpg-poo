@@ -10,6 +10,7 @@ public class GunShop {
     // Exibe os itens disponíveis para compra e permite que o herói compre
     public static void exibirItens(Personagens personagem) {
         System.out.println(" -Bem-vindo à loja de Equipamentos! Escolha um item para comprar:\n");
+        System.out.println(" Você possui atualmente " + personagem.getDinheiro());
         System.out.println("1. Espada de Aço - 100 moedas");
         System.out.println("2. Escudo de Madeira - 80 moedas");
         System.out.println("3. Poção de Vida - 50 moedas");
@@ -18,7 +19,7 @@ public class GunShop {
         System.out.println("6. Martelo da Forja - 130 moedas");
         System.out.println("7. Cetro de Magias - 125 moedas");
         System.out.println("8. Escudo de Diamante - 140 moedas");
-        System.out.println("9. Botas de Vento - 135 moedas");
+        System.out.println("9. Botas de Vento - 135 moedas\n");
         
         Scanner scanner = new Scanner(System.in);
         int escolha = scanner.nextInt();
@@ -42,27 +43,27 @@ public class GunShop {
                 }
                 break;
             case 5:
-                if (personagem.gastarDinheiro(150)) {
+                if (personagem.gastarDinheiro(100)) {
                     personagem.coletarItens(ReadyItems.espadaGrande());
                 }
                 break; 
             case 6:
-                if (personagem.gastarDinheiro(130)) {
+                if (personagem.gastarDinheiro(80)) {
                     personagem.coletarItens(ReadyItems.marteloDaForja());
                 }
                 break;
             case 7:
-                if (personagem.gastarDinheiro(125)) {
+                if (personagem.gastarDinheiro(95)) {
                     personagem.coletarItens(ReadyItems.cetroDeMagias());
                 }
                 break;
             case 8:
-                if (personagem.gastarDinheiro(140)) {
+                if (personagem.gastarDinheiro(100)) {
                     personagem.coletarItens(ReadyItems.escudoDeDiamante());
                 }
                 break;
             case 9:
-                if (personagem.gastarDinheiro(135)) {
+                if (personagem.gastarDinheiro(75)) {
                     personagem.coletarItens(ReadyItems.botasDeVento());
                 }
                 break;

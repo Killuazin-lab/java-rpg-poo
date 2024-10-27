@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class Guerreiro extends Personagens {
     private String[] habilidades;
 
-    public Guerreiro(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
+    public Guerreiro(String nome, int vida, int mana, int ataque, int defesa, int porcentagemXpGanho,
                      int ataqueHabilidadeEspecial, String[] habilidades, String classe) {
-        super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade, ataqueHabilidadeEspecial, classe);
+        super(nome, vida, mana, ataque, defesa, ataqueHabilidadeEspecial, classe);
         this.habilidades = habilidades;
     }
 

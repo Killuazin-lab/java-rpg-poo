@@ -11,9 +11,9 @@ public class Druida extends Personagens {
     private int contadorTurnos;
     private ArrayList<Planta> plantasInvocadas;
 
-    public Druida(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
+    public Druida(String nome, int vida, int mana, int ataque, int defesa, int porcentagemXpGanho,
                 int ataqueHabilidadeEspecial, String[] poderes, String classe) {
-        super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade, ataqueHabilidadeEspecial, classe);
+        super(nome, vida, mana, ataque, defesa, ataqueHabilidadeEspecial, classe);
         this.poderes = poderes;
         this.sementes = 1;  // O Druida começa com 1 semente
         this.contadorTurnos = 0;

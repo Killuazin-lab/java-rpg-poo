@@ -10,9 +10,9 @@ public class Necromante extends Personagens {
     private int energiaDasTrevas; // Energia das trevas do necromante
     private ArrayList<Invocacao> reservatorioDeMortos; // Armazena invocações
 
-    public Necromante(String nome, int vida, int mana, int ataque, int defesa, int regenVida, int regenMana, int velocidade, int porcentagemXpGanho,
+    public Necromante(String nome, int vida, int mana, int ataque, int defesa, int porcentagemXpGanho,
                     int energiaDasTrevas, int ataqueHabilidadeEspecial, String[] habilidades, String classe) {
-        super(nome, vida, mana, ataque, defesa, regenVida, regenMana, velocidade, ataqueHabilidadeEspecial, classe);
+        super(nome, vida, mana, ataque, defesa, ataqueHabilidadeEspecial, classe);
         this.habilidades = habilidades;
         this.energiaDasTrevas = energiaDasTrevas;
         this.reservatorioDeMortos = new ArrayList<Invocacao>();

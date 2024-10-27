@@ -38,8 +38,8 @@ public class Text {
 
   // Texto explicação Dungeons
   public static String explicarDungeons() {
-      return "\n - A Dungeons possui diversos monstros, sua quantidade variam de 4 a 5, algumas raras vezes um monstro especial aparece.\n"+
-              " - Podemos dizer que elas possuem 'niveis' de dificuldade, e cada nivel possui uma dificuldade diferente, indo de 1 a 7\n" +
+      return "\n - A Dungeons possui diversos monstros, sua quantidade variam de 5 a 6, a ordem de combate é definido por um bobo jogo de Cara ou Coroa.\n"+
+              " - Podemos dizer que elas possuem 'niveis' de dificuldade, e cada nivel possui uma dificuldade diferente\n" +
               " - Como você acabou de se registrar, só pode acessar a Duegon de nivel 1, para poder liberar o acesso as outras, tem que conseguir mais nivel\n" +
               " - Conforme você subir de nivel, vai liberar as Dungeons\n";
   }
@@ -129,9 +129,8 @@ public class Text {
 
   public static String ataquesDisponiveis(){
     return "Tipos de ataque:\n" +
-        "1. Socão" +
+        "1. Socão\n" +
         "2. Usar Habilidade\n" + 
         "3. Usar item\n";
   }
 }
-

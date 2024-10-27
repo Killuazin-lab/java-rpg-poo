@@ -10,9 +10,6 @@ import Game.Skills.HabilidadesEspecificas;
 
 public class Personagens extends Criatura{
     protected int mana;
-    protected int regenVida;
-    protected int regenMana;
-    protected int velocidade; // variavel que decide a ordem de ataque
     private int dinheiro;  // Atributo para o dinheiro do personagem
     private int nivel;
     private int experiencia;  // XP atual
@@ -22,13 +19,10 @@ public class Personagens extends Criatura{
     protected String classe;
     public boolean morreu;
 
-    public Personagens(String nome, int vida, int mana, int ataque, int defesa, int regenVida,
-                       int regenMana, int velocidade, int ataqueHabilidadeEspecial, String classe) {
-        super(nome, regenVida, ataque, defesa, ataqueHabilidadeEspecial);
+    public Personagens(String nome, int vida, int mana, int ataque, int defesa, 
+                     int ataqueHabilidadeEspecial, String classe) {
+        super(nome,vida, ataque, defesa, ataqueHabilidadeEspecial);
         this.mana = mana;
-        this.regenVida = regenVida;
-        this.regenMana = regenMana;
-        this.velocidade = velocidade;
         this.nivel = 1;
         this.experiencia = 0;
         this.habilidades = new ArrayList<Habilidade>();
@@ -49,6 +43,8 @@ public class Personagens extends Criatura{
             this.nivel = 50;
         } 
         System.out.println("Parabéns! Subiu para o nível " + this.nivel);
+        this.vida += 20;
+        this.mana += 20;
         desbloquearHabilidade();
     }
 
@@ -105,7 +101,6 @@ public class Personagens extends Criatura{
         super.defesa += item.getAumentoDefesa() + item.getDebuf();
         super.vida += item.getAumentoVida() + item.getDebuf();
         this.mana += item.getAumentoMana() + item.getDebuf();
-        this.velocidade += item.getAumentoVelocidade() + item.getDebuf();
         System.out.println("\n" + item.getNome() + " equipado!\n");
     }
 
@@ -114,7 +109,6 @@ public class Personagens extends Criatura{
         this.defesa -= (item.getAumentoDefesa() + item.getDebuf());
         this.vida -= (item.getAumentoVida() + item.getDebuf());
         this.mana -= (item.getAumentoMana() + item.getDebuf());
-        this.velocidade -= (item.getAumentoVelocidade() + item.getDebuf());
         this.itemEquipado = null;
         System.out.println("\n" + item.getNome() + " desequipado!\n");
     }
@@ -152,22 +146,6 @@ public class Personagens extends Criatura{
         this.mana = mana;
     }
 
-    public int getRegenVida() {
-        return regenVida;
-    }
-    
-    public int getRegenMana() {
-        return regenMana;
-    }
-
-    public int getVelocidade() {
-        return velocidade;
-    }
-
-    public void setVelocidade(int velocidade) {
-        this.velocidade = velocidade;
-    }
-
     public ArrayList<Item> getItensColetados() {
       return itensColetados;
     }
@@ -195,9 +173,6 @@ public class Personagens extends Criatura{
                     "Mana: " + mana + "\n" +
                     "Ataque: " + getAtaque() + "\n" +
                     "Defesa: " + getDefesa() + "\n" +
-                    "Regeneração de Vida: " + regenVida + "\n" +
-                    "Regeneração de Mana: " + regenMana + "\n" +
-                    "Velocidade: " + velocidade +
                     "Nível: " + nivel + "\n";          
         }
 }

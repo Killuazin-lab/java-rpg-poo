@@ -43,7 +43,7 @@ public class Dungeon {
 
         ArrayList<Monstro> monstrosDungeon = new ArrayList<Monstro>();
         for (int i = 0; i < quantidadeMonstro; i++) {
-            Monstro monstroAleatorio = monstrosDisponiveis.get(random.nextInt(monstrosDisponiveis.size()+1));
+            Monstro monstroAleatorio = monstrosDisponiveis.get(random.nextInt(monstrosDisponiveis.size()));
             monstrosDungeon.add(monstroAleatorio);
         }
         return monstrosDungeon;
@@ -65,23 +65,26 @@ public class Dungeon {
     // Sistema de combate por turnos
     public void combate() {
         ordenarMonstros();
-
+        int vidaMaxima = personagemEscolhido.getVida(); 
         int round = 0;
         for(Monstro monstro: monstrosDungeon){
+            
             boolean personagemComeca = caraCoroa(monstro);
             int roundUltimateMonstro = roundUltimateMonstro(round);
 
             while(this.personagemEscolhido.getVida() > 0 && monstro.getVida() > 0){
                System.out.println("Round: " + round); 
                System.out.println("Vida do personagem: " + this.personagemEscolhido.getVida() + "\n");
-               System.out.println("Vida do monstro: " + monstro.getVida());
+               System.out.println("Vida do " + monstro.getNome()+ " : " + monstro.getVida());
 
                if(personagemComeca){
                 personagemAtacar(monstro);
+                if (monstro.getVida() <= 0) break;
                 monstroAtacar(monstro, round, roundUltimateMonstro);
                 personagemComeca = false;
                }else{
                 monstroAtacar(monstro, round, roundUltimateMonstro);
+                if (this.personagemEscolhido.getVida() <= 0) break;
                 personagemAtacar(monstro);
                 personagemComeca = true;
                }
@@ -91,7 +94,15 @@ public class Dungeon {
                 break;
             }
             if(monstro.getVida() <= 0){
-                System.out.println("Parabéns você matou o monstro!\n Vamos para o próximo...");
+                System.out.println("Parabéns você matou o monstro!\n Vamos para o próximo...\n");
+                System.out.println("Você recupera uma certa quatidade de vida\n");
+                personagemEscolhido.setVida(vidaMaxima + 15);
+                personagemEscolhido.setMana(personagemEscolhido.getMana() + 60);
+                Random random = new Random();
+                int chanceDrop = random.nextInt(3);
+                if (chanceDrop == 2){
+                    SistemaDrop.verificarDrop(personagemEscolhido);
+                }
                 continue;
             }
         } 
@@ -100,7 +111,7 @@ public class Dungeon {
     private boolean caraCoroa(Monstro monstro){
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
-        System.out.println("CARA ou COROA?\n1. Cara\n2. Coroa");
+        System.out.println("CARA ou COROA?\n1. Cara\n2. Coroa\n");
         int caraCoroa = scanner.nextInt();
         caraCoroa = caraCoroa - 1;
         int escolhaCaraCoroa = random.nextInt(2);
@@ -110,20 +121,20 @@ public class Dungeon {
         if(personagemComeca){
             System.out.println(this.personagemEscolhido.getNome() + " começa!\n");
         }else{
-            System.out.println("O monstro começa!");
+            System.out.println("O "+ monstro.getNome() +" começa!");
         }
         return personagemComeca;
     }
 
     private int roundUltimateMonstro(int round){
         Random random = new Random();
-        int roundUltimateMonstro = random.nextInt(10);
+        int roundUltimateMonstro = random.nextInt(5);
         return roundUltimateMonstro;
     }
 
     private int escolherAtaque(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Escolha seu ataque:");
+        System.out.println("\nEscolha seu ataque:");
         System.out.println(Text.ataquesDisponiveis());
         int escolhaAtaque = scanner.nextInt();
         return escolhaAtaque;
@@ -131,10 +142,10 @@ public class Dungeon {
 
     
     private void caso1UsarAtaqueBasico(Monstro monstro){
-        System.out.println("\n" + this.personagemEscolhido.getNome() + "deu um socão!");
+        System.out.println("\n" + this.personagemEscolhido.getNome() + " deu um Ataque Basico");
         monstro.sofrerDano(this.personagemEscolhido.getAtaque());
-        System.out.println(monstro + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
-        System.out.println(monstro + " ficou com " + monstro.getVida() + " de vida.\n");
+        System.out.println(monstro.getNome() + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
+        System.out.println(monstro.getNome() + " ficou com " + monstro.getVida() + " de vida.\n");
     }
 
     private void caso2UsarHabilidade(Monstro monstro){
@@ -146,10 +157,10 @@ public class Dungeon {
         }
         int escolhaHabilidade = scanner.nextInt();
         int danoTotal = personagemEscolhido.usarHabilidade(escolhaHabilidade - 1);
-        System.out.println("\n" + this.personagemEscolhido.getNome() + "usou sua habilidade.");
+        System.out.println("\n" + this.personagemEscolhido.getNome() + " usou sua habilidade.");
         monstro.sofrerDano(danoTotal);
-        System.out.println(monstro + " sofreu " + danoTotal + " de dano.");
-        System.out.println(monstro + " ficou com " + monstro.getVida() + " de vida.\n");
+        System.out.println(monstro.getNome() + " sofreu " + danoTotal + " de dano.");
+        System.out.println(monstro.getNome() + " ficou com " + monstro.getVida() + " de vida.\n");
     }
 
     private void caso3UsarItem(Monstro monstro){
@@ -170,8 +181,8 @@ public class Dungeon {
         this.personagemEscolhido.equiparItem(itemEquipado);
         System.out.println("\n" + this.personagemEscolhido.getNome() + " usou seu item.");
         monstro.sofrerDano(this.personagemEscolhido.getAtaque());
-        System.out.println(monstro + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
-        System.out.println(monstro + " ficou com " + monstro.getVida() + " de vida.\n");
+        System.out.println(monstro.getNome() + " sofreu " + this.personagemEscolhido.getAtaque() + " de dano.");
+        System.out.println(monstro.getNome() + " ficou com " + monstro.getVida() + " de vida.\n");
         this.personagemEscolhido.desequiparItem(itemEquipado);
     }
 
@@ -195,12 +206,17 @@ public class Dungeon {
 
     public void monstroAtacar(Monstro monstro, int round, int roundUltimateMonstro){
         if(roundUltimateMonstro == round){
-            System.out.println("MONSTER ULTIMATE!" +
-             "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + "\nSe lascou!");
+            System.out.println("O " + monstro.getNome() +" usou su habilidade Suprema " +
+             "\nVocê foi atacado por " + monstro.getHabilidadeEspecial() + " Se Lascou zé!");
             this.personagemEscolhido.sofrerDano(monstro.getAtaqueHabilidadeEspecial());
+            System.out.println("Você ficou com " + personagemEscolhido.getVida() + " de vida");
         }else{
-            System.out.println("\nPrepare-se! O monstro irá atacar!");
+            System.out.println("\nPrepare-se! O " + monstro.getNome() + " irá atacar!\n");
             this.personagemEscolhido.sofrerDano(monstro.getAtaque());
+            System.out.println("O " + monstro.getNome() + " te atacou e você ficou com " + personagemEscolhido.getVida() + " de vida.\n" );
+        }
+        if(personagemEscolhido.getVida() <= 0){
+            personagemEscolhido.morreu = true;
         }
     }
 

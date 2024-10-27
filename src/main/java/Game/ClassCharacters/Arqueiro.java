@@ -10,9 +10,9 @@ public class Arqueiro extends Personagens {
     private String[] habilidades;
     private BolsaDeFlechas bolsaDeFlechas;
 
-    public Arqueiro(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
+    public Arqueiro(String nome, int vida, int mana, int ataque, int defesa, int porcentagemXpGanho,
                 int ataqueHabilidadeEspecial, String[] habilidades, String classe) {
-        super(nome, vida, mana, ataque, defesa,regenVida,regenMana,velocidade, ataqueHabilidadeEspecial, classe);
+        super(nome, vida, mana, ataque, defesa, ataqueHabilidadeEspecial, classe);
         this.Classe = "Arqueiro";
         this.habilidades = habilidades;
         this.bolsaDeFlechas = new BolsaDeFlechas();
