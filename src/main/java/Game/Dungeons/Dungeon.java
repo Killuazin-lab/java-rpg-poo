@@ -13,6 +13,7 @@ import Game.Items.Item;
 import Game.Items.ReadyItems;
 import Game.Monters.Monstro;
 import Game.Monters.Monstros;
+import Game.Skills.Habilidade;
 import Game.Texts.Text;
 
 public class Dungeon {
@@ -155,8 +156,16 @@ public class Dungeon {
     }
 
     private void caso2UsarHabilidade(Monstro monstro){
+        Scanner scanner = new Scanner(System.in);
+        int indiceHabilidade = 1;
+        for(Habilidade habilidade : personagemEscolhido.getHabilidade()){
+            System.out.println(indiceHabilidade + ". " + habilidade.getNome());
+            indiceHabilidade += 1;
+        }
+        int escolhaHabilidade = scanner.nextInt();
+        int danoTotal = personagemEscolhido.usarHabilidade(escolhaHabilidade - 1);
         System.out.println("\n" + this.personagemEscolhido.getNome() + "usou sua habilidade.");
-        monstro.sofrerDano(this.personagemEscolhido.getAtaque());
+        monstro.sofrerDano(danoTotal);
     }
 
     private void caso3UsarItem(Monstro monstro){

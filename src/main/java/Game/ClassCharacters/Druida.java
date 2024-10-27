@@ -6,7 +6,6 @@ import java.util.Arrays;
 import Game.Invocation.Planta;
 
 public class Druida extends Personagens {
-    public String Classe;
     private String[] poderes; // Poderes da natureza o
     private int sementes;
     private int contadorTurnos;
@@ -15,7 +14,6 @@ public class Druida extends Personagens {
     public Druida(String nome, int vida, int mana, int ataque, int defesa,int regenVida, int regenMana,int velocidade, int porcentagemXpGanho,
                 int ataqueHabilidadeEspecial, String[] poderes, String classe) {
         super(nome, vida, mana, ataque, defesa,regenVida,regenMana, velocidade, ataqueHabilidadeEspecial, classe);
-        this.Classe = "Druida";
         this.poderes = poderes;
         this.sementes = 1;  // O Druida começa com 1 semente
         this.contadorTurnos = 0;
@@ -57,8 +55,7 @@ public class Druida extends Personagens {
             for (Planta planta : plantasInvocadas) {
                 plantasInfo.append(planta.toString()).append("\n");
             }
-            return super.toString() + "\n" +  // Chama o toString da classe mãe (Personagens)
-                    "Classe: " + Classe + "\n" +
+            return super.toString() + "\n" +
                     "Habilidades: " + Arrays.toString(poderes) +
                     "\nSementes: " + sementes + "\n" +
                     "Plantas Invocadas:\n" + plantasInfo.toString();

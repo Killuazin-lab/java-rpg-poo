@@ -152,7 +152,7 @@ public class Main {
         System.out.println(Text.entrarDungeon());
 
         System.out.println("-Ei herói... Quase me esqueci... Tome este punhado de experiência!");
-        personagemEscolhido.ganharExperiencia(500);
+        personagemEscolhido.ganharExperiencia(500); // Começar no nível 5
         System.out.println(personagemEscolhido.getClass());
 
         System.out.println("tESTE");

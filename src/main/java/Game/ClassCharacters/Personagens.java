@@ -37,7 +37,7 @@ public class Personagens extends Criatura{
     }
 
     public void ganharExperiencia(int experiencia){
-        this.experiencia =  this.experiencia + experiencia;
+        this.experiencia += experiencia;
         subirNivel();
     }
 
@@ -50,7 +50,7 @@ public class Personagens extends Criatura{
     }
 
     public void desbloquearHabilidade(){
-        Map<Integer, Habilidade> habilidadesClasseDesbloqueadas = HabilidadesEspecificas.getHabilidadePorClasseENivel(this.classe);
+        Map<Integer, Habilidade> habilidadesClasseDesbloqueadas = HabilidadesEspecificas.getHabilidadePorClasse(this.classe);
         for(Integer nivelHabilidade : habilidadesClasseDesbloqueadas.keySet()){
             if(this.nivel >= nivelHabilidade){
                 this.habilidades.add(habilidadesClasseDesbloqueadas.get(nivelHabilidade));
@@ -58,24 +58,21 @@ public class Personagens extends Criatura{
         }
     }
 
-    public void usarHabilidade(int indiceHabilidade) {
-        if (indiceHabilidade < habilidades.size()) {
-            Habilidade habilidade = habilidades.get(indiceHabilidade);
+    public int usarHabilidade(int indiceHabilidade) {
+        if (indiceHabilidade < this.habilidades.size()) {
+            Habilidade habilidade = this.habilidades.get(indiceHabilidade);
             if (mana >= habilidade.getCustoMana()) {
-                // Cálculo do dano total: dano da habilidade + ataque do personagem
                 int danoTotal = this.ataque + habilidade.getDano();
-
-                // Exibe a mensagem com o nome da habilidade e o dano total causado
                 System.out.println(this.nome + " usou " + habilidade.getNome() + " e causou " + danoTotal + " de dano!");
-
-                // Reduz o custo da mana do personagem
                 mana -= habilidade.getCustoMana();
+                return danoTotal;
             } else {
                 System.out.println("Mana insuficiente para usar " + habilidade.getNome() + "\n");
             }
         } else {
             System.out.println("Habilidade inválida.\n");
         }
+        return 0;
     }
 
     public void passarTurno() {
@@ -182,6 +179,10 @@ public class Personagens extends Criatura{
 
     public String getClasse(){
         return this.classe;
+    }
+
+    public ArrayList<Habilidade> getHabilidade(){
+        return this.habilidades;
     }
 
      @Override
