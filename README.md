@@ -7,6 +7,10 @@
 - Gabriel Ferreira Delinardi;
 - Gabriel Frigo Sena.
 
+#Vídeo
+Assista ao vídeo abaixo no Youtube para obter detalhes do funcionamento do jogo RPG:
+Link: https://youtu.be/Qd8BJXfeQiE
+
 Este é um projeto de um jogo RPG baseado em Java. O objetivo é criar um sistema de combate por turnos, onde os jogadores podem escolher personagens, lutar contra monstros, usar habilidades e itens, e evoluir suas classes. Abaixo está uma descrição dos principais componentes do sistema.
 
 ## 1. Classes de Personagens
