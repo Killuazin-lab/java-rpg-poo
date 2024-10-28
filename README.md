@@ -7,7 +7,7 @@
 - Gabriel Ferreira Delinardi;
 - Gabriel Frigo Sena.
 
-#Vídeo
+# Vídeo
 Assista ao vídeo abaixo no Youtube para obter detalhes do funcionamento do jogo RPG:
 Link: https://youtu.be/Qd8BJXfeQiE
 
