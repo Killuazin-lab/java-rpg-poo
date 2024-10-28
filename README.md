@@ -1,6 +1,11 @@
-# RPG Java Game - POO - Prof. Eduardo Takeo
+# RPG Java Game - POO 
 
-# Integrantes - Breno Amorim Candido, Gabriel Ferreira Delinardi, Gabriel Frigo Sena.
+- Prof. Eduardo Takeo
+
+# Integrantes - 
+- Breno Amorim Candido;
+- Gabriel Ferreira Delinardi;
+- Gabriel Frigo Sena.
 
 Este é um projeto de um jogo RPG baseado em Java. O objetivo é criar um sistema de combate por turnos, onde os jogadores podem escolher personagens, lutar contra monstros, usar habilidades e itens, e evoluir suas classes. Abaixo está uma descrição dos principais componentes do sistema.
 
