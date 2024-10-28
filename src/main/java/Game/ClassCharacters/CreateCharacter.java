@@ -71,7 +71,7 @@ public class CreateCharacter {
 
   public static Necromante createNecromante(){
     Necromante necromante = new Necromante("Necromante",
-                                          190, 170, 55, 20,
+                                          190, 170, 160, 20,
                                           1, 120, 0,
                                           new String[] {"Golpe Basico","Invocação de Cadaver"}, "Necromante");
     Invocacao pequenoZumbi = new Invocacao("Pequeno Zumbi", 50, 10, 5, 5);

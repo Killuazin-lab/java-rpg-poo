@@ -13,13 +13,13 @@ public class GunShop {
         System.out.println(" Você possui atualmente " + personagem.getDinheiro());
         System.out.println("1. Espada de Aço - 100 moedas");
         System.out.println("2. Escudo de Madeira - 80 moedas");
-        System.out.println("3. Poção de Vida - 50 moedas");
+        System.out.println("3. Poção de Vida - 70 moedas");
         System.out.println("4. Botas de Velocidade - 70 moedas");
-        System.out.println("5. Espada Grande - 150 moedas");
-        System.out.println("6. Martelo da Forja - 130 moedas");
-        System.out.println("7. Cetro de Magias - 125 moedas");
-        System.out.println("8. Escudo de Diamante - 140 moedas");
-        System.out.println("9. Botas de Vento - 135 moedas\n");
+        System.out.println("5. Espada Grande - 100 moedas");
+        System.out.println("6. Martelo da Forja - 80 moedas");
+        System.out.println("7. Cetro de Magias - 95 moedas");
+        System.out.println("8. Escudo de Diamante - 100 moedas");
+        System.out.println("9. Botas de Vento - 75 moedas\n");
         
         Scanner scanner = new Scanner(System.in);
         int escolha = scanner.nextInt();

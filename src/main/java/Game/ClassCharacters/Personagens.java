@@ -49,6 +49,7 @@ public class Personagens extends Criatura{
     }
 
     public void desbloquearHabilidade(){
+        this.habilidades.clear();
         Map<Integer, Habilidade> habilidadesClasseDesbloqueadas = HabilidadesEspecificas.getHabilidadePorClasse(this.classe);
         for(Integer nivelHabilidade : habilidadesClasseDesbloqueadas.keySet()){
             if(this.nivel >= nivelHabilidade){

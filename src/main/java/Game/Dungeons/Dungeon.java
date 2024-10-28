@@ -96,7 +96,7 @@ public class Dungeon {
             if(monstro.getVida() <= 0){
                 System.out.println("Parabéns você matou o monstro!\n Vamos para o próximo...\n");
                 System.out.println("Você recupera uma certa quatidade de vida\n");
-                personagemEscolhido.setVida(vidaMaxima + 15);
+                personagemEscolhido.setVida(vidaMaxima + 50);
                 personagemEscolhido.setMana(personagemEscolhido.getMana() + 60);
                 Random random = new Random();
                 int chanceDrop = random.nextInt(3);
@@ -140,7 +140,6 @@ public class Dungeon {
         return escolhaAtaque;
     }
 
-    
     private void caso1UsarAtaqueBasico(Monstro monstro){
         System.out.println("\n" + this.personagemEscolhido.getNome() + " deu um Ataque Basico");
         monstro.sofrerDano(this.personagemEscolhido.getAtaque());
@@ -220,4 +219,27 @@ public class Dungeon {
         }
     }
 
+    public boolean combaterBossFinal(Monstro bossFinal){
+        int round = 0;
+        int vidaMaxima = personagemEscolhido.getVida(); 
+        while(this.personagemEscolhido.getVida() > 0 && bossFinal.getVida() > 0){
+            personagemEscolhido.setVida(vidaMaxima + 50);
+            int roundUltimateBossFinal = roundUltimateMonstro(round);
+            System.out.println("Round: " + round); 
+            System.out.println("Vida do personagem: " + this.personagemEscolhido.getVida() + "\n");
+            System.out.println("Vida do " + bossFinal.getNome()+ " : " + bossFinal.getVida());
+
+            personagemAtacar(bossFinal);
+            if (bossFinal.getVida() <= 0){
+                boolean personagemVenceu = true;
+                return personagemVenceu;
+            };
+            monstroAtacar(bossFinal, round, roundUltimateBossFinal);
+            if (personagemEscolhido.getVida() <= 0){
+                boolean bossVenceu = false;
+                return bossVenceu;
+            }
+        }
+        return false;
+    }
 }

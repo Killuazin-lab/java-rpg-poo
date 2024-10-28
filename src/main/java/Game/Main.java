@@ -165,8 +165,6 @@ public class Main {
                 if(personagemEscolhido.morreu){
                     break;
                 }
-                // Volte para a cidade
-                // Compre mais itens
             }
             if(personagemEscolhido.morreu){
                 System.out.println("Seu personagem morreu. Jogar novamente?\n1. Sim\n2. Não");
@@ -178,28 +176,29 @@ public class Main {
                 }
             }
 
-            System.out.println("\n Após terminar todas as dungeons, você volta para a cidade, ");
-            Monstro bossFinal = new Monstro("Aarfeus", 600,150,100," Arauto da Morte ",300);
-            // combate com ele
-
-
-            if (WIN) {
+            // Luta contra o Boss Final
+            System.out.println("\n Após terminar todas as dungeons, você volta para a cidade...");
+            Dungeon dungeonBossFinal = new Dungeon(personagemEscolhido);
+            Monstro bossFinal = new Monstro("Aarfeus", 600,70,40," Arauto da Morte ",300);
+            boolean personagemVenceu = dungeonBossFinal.combaterBossFinal(bossFinal);
+            if (personagemVenceu) {
                 try {
                     List<String> falasNarracao = Arrays.asList(
-                                    "Com a queda de Aarfeus, a fortaleza começa a se despedaçar, e os guerreiros escapam enquanto o castelo desmorona. Quando finalmente chegam ao exterior, o mundo parece diferente." +
-                                    "A escuridão que antes cobria o céu se dissipa, e os primeiros raios de luz iluminam a terra, revelando campos e rios que voltam a florescer. "+ 
-                                    "É como se a própria natureza respondesse à derrota do tirano. Cidades antes desertas e destruídas começam a se reerguer, e sobreviventes saem de seus esconderijos, vislumbrando a esperança de uma nova era."
+                            "Com a queda de Aarfeus, a fortaleza começa a se despedaçar, e os guerreiros escapam enquanto o castelo desmorona. Quando finalmente chegam ao exterior, o mundo parece diferente." +
+                            "A escuridão que antes cobria o céu se dissipa, e os primeiros raios de luz iluminam a terra, revelando campos e rios que voltam a florescer. "+ 
+                            "É como se a própria natureza respondesse à derrota do tirano. Cidades antes desertas e destruídas começam a se reerguer, e sobreviventes saem de seus esconderijos, vislumbrando a esperança de uma nova era."
                     );
-    
+        
                     for (String fala : falasNarracao) {
                         System.out.println(fala);
                         Thread.sleep(2000);
                     }
+                    System.out.println("\n*******************\nFIM RPG\n*******************\\");
+                    break;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
-            else if (personagemEscolhido.morreu){
+            } else if (personagemEscolhido.morreu){
                 System.out.println("Infelizmente seus Esforços foram em vão, e o imperio de Aarfeus continua a reinar!");
                 System.out.println("Seu personagem morreu. Jogar novamente?\n1. Sim\n2. Não");
                 int escolhaJogarNovamente = scanner.nextInt();
@@ -208,12 +207,7 @@ public class Main {
                 }else{
                     break;
                 }
-
             }
-
-
-
-           
         }
     }
 }
